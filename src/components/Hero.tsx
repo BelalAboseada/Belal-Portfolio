@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
           </h1>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-6 text-muted-foreground">
             <AnimatedText
-              texts={["Front-End Developer", "UI Designer", "React Specialist"]}
+              texts={["Front-End Developer", "Web developer", "React developer"]}
               className="text-white font-poppins"
             />
           </h2>

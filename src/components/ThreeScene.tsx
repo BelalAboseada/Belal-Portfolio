@@ -1,5 +1,4 @@
-
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 
 interface ThreeSceneProps {
@@ -8,6 +7,8 @@ interface ThreeSceneProps {
 
 const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [previousMousePosition, setPreviousMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -20,7 +21,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
       0.1,
       1000
     );
-    camera.position.z = 5;
+    camera.position.z = 8;
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
@@ -40,25 +41,63 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
     pointLight2.position.set(-5, -5, 5);
     scene.add(pointLight2);
 
-    // Create geometry
-    const torusKnotGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-    const torusMaterial = new THREE.MeshStandardMaterial({
+    // Create geometry - Larger and more detailed
+    const geometry = new THREE.IcosahedronGeometry(2.5, 2);
+    const material = new THREE.MeshStandardMaterial({
       color: 0x1EAEDB,
-      metalness: 0.7,
-      roughness: 0.2,
+      metalness: 0.8,
+      roughness: 0.1,
       emissive: 0x0066cc,
-      emissiveIntensity: 0.2,
+      emissiveIntensity: 0.3,
+      wireframe: true,
     });
     
-    const torusKnot = new THREE.Mesh(torusKnotGeometry, torusMaterial);
-    scene.add(torusKnot);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    // Mouse interaction
+    const handleMouseDown = (event: MouseEvent) => {
+      setIsDragging(true);
+      setPreviousMousePosition({
+        x: event.clientX,
+        y: event.clientY
+      });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      if (!isDragging) return;
+
+      const deltaMove = {
+        x: event.clientX - previousMousePosition.x,
+        y: event.clientY - previousMousePosition.y
+      };
+
+      mesh.rotation.y += deltaMove.x * 0.01;
+      mesh.rotation.x += deltaMove.y * 0.01;
+
+      setPreviousMousePosition({
+        x: event.clientX,
+        y: event.clientY
+      });
+    };
+
+    mountRef.current.addEventListener('mousedown', handleMouseDown);
+    mountRef.current.addEventListener('mouseup', handleMouseUp);
+    mountRef.current.addEventListener('mousemove', handleMouseMove);
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
 
-      torusKnot.rotation.x += 0.01;
-      torusKnot.rotation.y += 0.01;
+      if (!isDragging) {
+        mesh.rotation.x += 0.005;
+        mesh.rotation.y += 0.005;
+        mesh.rotation.z += 0.002;
+      }
 
       renderer.render(scene, camera);
     };
@@ -82,14 +121,17 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
       window.removeEventListener('resize', handleResize);
       
       if (mountRef.current) {
+        mountRef.current.removeEventListener('mousedown', handleMouseDown);
+        mountRef.current.removeEventListener('mouseup', handleMouseUp);
+        mountRef.current.removeEventListener('mousemove', handleMouseMove);
         mountRef.current.removeChild(renderer.domElement);
       }
       
-      scene.remove(torusKnot);
-      torusKnotGeometry.dispose();
-      torusMaterial.dispose();
+      scene.remove(mesh);
+      geometry.dispose();
+      material.dispose();
     };
-  }, []);
+  }, [isDragging, previousMousePosition]);
 
   return <div ref={mountRef} className={className} />;
 };

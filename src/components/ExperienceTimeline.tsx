@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -15,14 +14,14 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experiences }) 
         <div
           key={experience.id}
           className={cn(
-            "flex flex-col md:flex-row md:gap-8 md:items-center",
+            "flex flex-col md:flex-row md:gap-8 md:items-center relative",
             index % 2 === 0 ? "md:flex-row-reverse" : ""
           )}
         >
           <div className="md:w-1/2 mb-4 md:mb-0 md:text-right md:pr-8">
             <div
               className={cn(
-                "relative w-12 h-12 rounded-full bg-blue-accent text-white flex items-center justify-center font-bold mb-4 shadow-glow md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10",
+                "relative w-7 h-7 rounded-full text-white bg-background border-2 border-blue-accent flex items-center justify-center text-sm font-medium  transition-all duration-300 hover:scale-110 hover:bg-blue-accent/10 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10",
                 index % 2 === 0 ? "md:ml-0" : "md:ml-0"
               )}
             >
