@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle  } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
 import Movix from "@/assets/Movix2.png";
@@ -10,13 +10,31 @@ import TChat from "@/assets/t.chat.png";
 import CodeZone from "@/assets/Code Zone.png";
 import Bondi from "@/assets/Bondi.png";
 import Pixel from "@/assets/Pixel.png";
-import TwitterClone from "@/assets/";
+import TwitterClone from "@/assets/TwitterClone.png";
 import Crud from "@/assets/Crud.png";
 import Kasper from "@/assets/Kasper.png";
 import starbucks from "@/assets/Starbuks.png";
 import Todo from "@/assets/Todo.png";
 import YumDash from "@/assets/Screenshot (44).png";
 import Zakat from "@/assets/Screenshot (6).png";
+import Html from "@/assets/html_ph9Z0PP.png";
+import Js from "@/assets/Js.webp";
+import Css from "@/assets/css.webp";
+import React from "@/assets/React.webp";
+import Redux from "@/assets/Redux.png";
+import Git from "@/assets/git_nnrA35B.png";
+import GithubIcon from "@/assets/code_LmikzpY.png";
+import Firease from "@/assets/Firbase.webp";
+import Bootsrap from "@/assets/Bootstrap.png";
+import sass from "@/assets/sass.svg";
+import Google from "@/assets/search_v42JcMU.png";
+import Api from "@/assets/api_jWHrF5L.png";
+import Deploy from "@/assets/rocket.png";
+import Vscode from "@/assets/visual-studio_PvbYL6E.png";
+import Gpt from "@/assets/chatbot_hKae2Xk.png";
+import Agile from "@/assets/Agile.png";
+import tailwind from "@/assets/icons8-tailwind-css-48.png";
+import deepseek from "@/assets/deepSeek.png";
 
 // Rest of the types remain the same
 export type Project = {
@@ -48,10 +66,13 @@ export type Education = {
   description: string;
 };
 
-export type Skill = {
-  name: string;
-  level: number;
-};
+export type SkillCategory = "Skills" | "Tools";
+export interface Skill {
+  id: number;
+  title: string;
+  img: string;
+  Cat: SkillCategory;
+}
 
 export type SocialLink = {
   name: string;
@@ -59,13 +80,36 @@ export type SocialLink = {
   icon: LucideIcon;
 };
 
+
+export const skillsData: Skill[] = [
+  { id: 1, title: "Html", img: Html, Cat: "Skills" },
+  { id: 2, title: "Javascript", img: Js, Cat: "Skills" },
+  { id: 3, title: "Css", img: Css, Cat: "Skills" },
+  { id: 4, title: "React", img: React, Cat: "Skills" },
+  { id: 5, title: "Redux", img: Redux, Cat: "Skills" },
+  { id: 6, title: "Firease", img: Firease, Cat: "Tools" },
+  { id: 7, title: "git", img: Git, Cat: "Tools" },
+  { id: 8, title: "GitHub", img: GithubIcon, Cat: "Tools" },
+  { id: 9, title: "G(Search)", img: Google, Cat: "Tools" },
+  { id: 10, title: "sass", img: sass, Cat: "Skills" },
+  { id: 11, title: "Bootstrap", img: Bootsrap, Cat: "Skills" },
+  { id: 12, title: "Api", img: Api, Cat: "Skills" },
+  { id: 13, title: "Deploy", img: Deploy, Cat: "Skills" },
+  { id: 14, title: "VS Code", img: Vscode, Cat: "Tools" },
+  { id: 15, title: "ChatGpt", img: Gpt, Cat: "Tools" },
+  { id: 16, title: "tailwind css", img: tailwind, Cat: "Skills" },
+  { id: 17, title: "deep seek", img: deepseek, Cat: "Tools" },
+  { id: 18, title: "Agile(Scrum)", img: Agile, Cat: "Tools" }, // fixed duplicate ID
+];
+
+
 export const projects: Project[] = [
   {
     id: 1,
     title: "Request",
     description:
       "Project Management App with roles-based access control and real-time features",
-    tags: ["React", "Redux", "Tailwind CSS"],
+    tags: ["React", "Redux", "Tailwind CSS","Api integration" , "Axios" ,  "Real-time"],
     imageUrl: Request,
     overview: [
       "Implemented roles-based access control for consultants, owners, and contractors",
@@ -81,7 +125,7 @@ export const projects: Project[] = [
     id: 2,
     title: "T-chat",
     description: "Dashboard for a mobile app to track tasks efficiently",
-    tags: ["React", "Tailwind CSS", "Real-time" , "Api integration"],
+    tags: ["React", "Tailwind CSS", "Real-time", "Api integration"],
     imageUrl: TChat,
     overview: [
       "Dashboard for a mobile app to track tasks efficiently",
@@ -91,11 +135,11 @@ export const projects: Project[] = [
     ],
     category: "React",
   },
-   {
+  {
     id: 3,
     title: "Alamal",
     description: "Medical sales management system with comprehensive features",
-    tags: ["React", "Redux", "Firebase", "Tailwind CSS"],
+    tags: ["React", "Redux", "Axios", "Api integration", "Tailwind CSS"],
     imageUrl: AlamalDashboard,
     overview: [
       "Implemented functionalities for medical representatives, pharmacies, and sales managers",
@@ -121,13 +165,12 @@ export const projects: Project[] = [
     ],
     category: "React",
   },
- 
-  
+
   {
     id: 5,
     title: "Mock Mate AI",
     description: "AI-powered interview coach for practicing interview skills",
-    tags: ["React", "AI", "Firebase", "Tailwind CSS"],
+    tags: ["React", "Redux","Tailwind CSS", "AI" ],
     imageUrl: MockMate,
     demoLink: "https://mock--mate.vercel.app",
     githubLink: "https://github.com/BelalAboseada/MockMate-salamHack",
@@ -145,10 +188,8 @@ export const projects: Project[] = [
     description: "Articles Landing Page with dynamic content",
     tags: ["HTML", "CSS", "Sass", "Django"],
     imageUrl: Medari,
-    demoLink: "https://medari.web.app",
-    githubLink: "https://github.com/belal-aboseada/medari",
     overview: [
-      "Landing page for showcasing articles with dynamic content",
+      "Landing page for showcasing articles with dynamic content", 
       "Built with Django backend and custom HTML/CSS/Sass UI",
       "Integrated dynamic content loading via Django templates",
       "Fully responsive layout across devices",
@@ -242,7 +283,7 @@ export const projects: Project[] = [
     title: "Twitter Clone",
     description: "Static clone of Twitter/X UI with responsive design",
     tags: ["HTML", "CSS", "Responsive Design", "Modern UI"],
-    imageUrl: "/projects/twitter-clone.png",
+    imageUrl: TwitterClone,
     demoLink: "https://belalaboseada.github.io/twitter-clone",
     githubLink: "https://github.com/BelalAboSeada/twitter-clone",
     overview: [
@@ -258,7 +299,7 @@ export const projects: Project[] = [
     title: "CRUD System",
     description: "Complete CRUD operations implementation with local storage",
     tags: ["JavaScript", "Local Storage", "CRUD Operations", "UI/UX"],
-    imageUrl: "/projects/crud.png",
+    imageUrl: Crud,
     demoLink: "https://belalaboseada.github.io/cruds-system",
     githubLink: "https://github.com/BelalAboSeada/cruds-system",
     overview: [
@@ -274,7 +315,7 @@ export const projects: Project[] = [
     title: "Kasper",
     description: "Creative agency landing page with modern design",
     tags: ["HTML", "CSS", "Responsive Design", "Modern UI"],
-    imageUrl: "/projects/kasper.png",
+    imageUrl: Kasper,
     demoLink: "https://belalaboseada.github.io/kasper-templete",
     githubLink: "https://github.com/BelalAboSeada/kasper-templete",
     overview: [
@@ -336,41 +377,34 @@ export const education: Education[] = [
   {
     id: 1,
     degree: "Bachelor of Alsun",
-    institution: "University of Technology",
-    date: "2019 - 2023",
-    description:
-      "Specialized in web development and user interface design. Relevant coursework included Data Structures, Algorithms, Web Development, and Human-Computer Interaction.",
+    institution: "Alazhar University ",
+    date: "2022 - 2027",
+     description:
+      "Pursuing a Bachelor's degree in Alsun with a focus on Swahili, German, and English languages. The program emphasizes linguistic proficiency, cultural studies, and translation skills across multiple languages.",
   },
 ];
 
-export const skills: Skill[] = [
-  { name: "HTML5", level: 90 },
-  { name: "CSS3/SCSS", level: 85 },
-  { name: "JavaScript", level: 85 },
-  { name: "TypeScript", level: 75 },
-  { name: "React", level: 80 },
-  { name: "Redux", level: 70 },
-  { name: "Tailwind CSS", level: 85 },
-  { name: "Next.js", level: 70 },
-  { name: "Three.js", level: 65 },
-  { name: "Git", level: 75 },
-];
 
 export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
-    url: "https://github.com/belal-aboseada",
+    url: "https://github.com/BelalAboseada",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/belal-aboseada",
+    url: "https://www.linkedin.com/in/belal-hesham?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     icon: Linkedin,
   },
   {
     name: "Email",
     url: "mailto:belalaboseada@gmail.com",
     icon: Mail,
+  },
+   {
+    name: "WattsApp",
+    url: "https://wa.me/+201060074246",
+    icon: MessageCircle,
   },
 ];
 

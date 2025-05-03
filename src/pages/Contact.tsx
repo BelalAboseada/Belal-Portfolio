@@ -29,14 +29,14 @@ const Contact: React.FC = () => {
                     href="mailto:belal.aboseada@example.com" 
                     className="text-blue-accent hover:underline"
                   >
-                    belal.aboseada@example.com
+                    belalaboseada@gmail.com
                   </a>
                 </div>
                 
                 <div>
                   <h3 className="text-lg font-bold mb-2">Location</h3>
                   <p className="text-muted-foreground">
-                    New York, NY
+                   Cairo, Egypt
                   </p>
                 </div>
                 

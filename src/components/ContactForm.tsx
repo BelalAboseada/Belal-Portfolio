@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -9,25 +8,17 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  subject: z.string().min(2, {
-    message: "Subject must be at least 2 characters.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Please enter a valid email address."),
+  subject: z.string().min(2, "Subject must be at least 2 characters."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm: React.FC = () => {
   const { toast } = useToast();
-  
+
   const {
     register,
     handleSubmit,
@@ -45,82 +36,105 @@ const ContactForm: React.FC = () => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      // Replace with actual form submission logic
-      console.log("Form data:", data);
-      
-      // Simulate API call with a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const mailtoLink = `mailto:balalaboseada@icloud.com?subject=${encodeURIComponent(
+        data.subject
+      )}&body=${encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+      )}`;
+
+      window.location.href = mailtoLink;
+
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Opening mail client...",
+        description: "Please complete the email to send your message.",
       });
-      
+
       reset();
-    } catch (error) {
+    } catch (err) {
       toast({
         title: "Something went wrong",
-        description: "Your message couldn't be sent. Please try again later.",
+        description:
+          err instanceof Error ? err.message : "Please try again later.",
         variant: "destructive",
       });
     }
   };
 
+
+  const FormField = ({
+    id,
+    label,
+    error,
+    children,
+  }: {
+    id: string;
+    label?: string;
+    error?: string;
+    children: React.ReactNode;
+  }) => (
+    <div className="space-y-2">
+      {label && (
+        <label htmlFor={id} className="sr-only">
+          {label}
+        </label>
+      )}
+      {children}
+      {error && <p className="text-red-500 text-xs">{error}</p>}
+    </div>
+  );
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 gradient-border p-6 md:p-8 rounded-lg bg-card/50"
+      className="space-y-6  gradient-border p-6 md:p-8 rounded-lg bg-card/50"
+      noValidate
     >
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="space-y-2">
+        <FormField id="name" error={errors.name?.message}>
           <Input
             id="name"
             placeholder="Your Name"
+            aria-invalid={!!errors.name}
+            aria-describedby="name-error"
             className="bg-muted/50 border-muted"
             {...register("name")}
           />
-          {errors.name && (
-            <p className="text-red-500 text-xs">{errors.name.message}</p>
-          )}
-        </div>
+        </FormField>
 
-        <div className="space-y-2">
+        <FormField id="email" error={errors.email?.message}>
           <Input
             id="email"
             type="email"
             placeholder="Your Email"
+            aria-invalid={!!errors.email}
+            aria-describedby="email-error"
             className="bg-muted/50 border-muted"
             {...register("email")}
           />
-          {errors.email && (
-            <p className="text-red-500 text-xs">{errors.email.message}</p>
-          )}
-        </div>
+        </FormField>
       </div>
 
-      <div className="space-y-2">
+      <FormField id="subject" error={errors.subject?.message}>
         <Input
           id="subject"
           placeholder="Subject"
+          aria-invalid={!!errors.subject}
+          aria-describedby="subject-error"
           className="bg-muted/50 border-muted"
           {...register("subject")}
         />
-        {errors.subject && (
-          <p className="text-red-500 text-xs">{errors.subject.message}</p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="space-y-2">
+      <FormField id="message" error={errors.message?.message}>
         <Textarea
           id="message"
           placeholder="Your Message"
+          aria-invalid={!!errors.message}
+          aria-describedby="message-error"
           className="bg-muted/50 border-muted min-h-[150px]"
           {...register("message")}
         />
-        {errors.message && (
-          <p className="text-red-500 text-xs">{errors.message.message}</p>
-        )}
-      </div>
+      </FormField>
 
       <Button
         type="submit"

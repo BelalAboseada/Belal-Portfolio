@@ -1,27 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Belal Aboseada | Front-End Developer</title>
-    <meta name="description" content="Portfolio website for Belal Aboseada, a Front-End Developer specializing in React and modern web technologies." />
-    <meta name="author" content="Belal Aboseada" />
 
-    <meta property="og:title" content="Belal Aboseada | Front-End Developer" />
-    <meta property="og:description" content="Portfolio website for Belal Aboseada, a Front-End Developer specializing in React and modern web technologies." />
+    <title>Belal Aboseada - Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/src/assets/icon.png" type="image/png" />
+
+    <!-- Meta Tags for SEO -->
+    <meta
+      name="description"
+      content="Welcome to my portfolio website! I'm a frontend developer passionate about creating engaging and user-friendly web experiences. Explore my projects and skills to learn more about what I can offer."
+    />
+    <meta name="author" content="Belal Hesham" />
+    <meta name="copyright" content="Belal Hesham Portfolio" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="Portfolio, Belal, Belal Hesham, React, Freelancer, Frontend Developer, Web Developer"
+    />
+
+    <!-- Open Graph Meta Tags (For social sharing) -->
+    <meta property="og:title" content="Belal Hesham - Portfolio" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:url" content="https://belal-portfolio.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://belal-portfolio.vercel.app/images/preview.png"
+    />
+    <meta
+      property="og:description"
+      content="Professional Frontend Developer specializing in React.js development and modern web technologies. Creating responsive, performant web applications with user-centered design."
+    />
+    <meta property="og:site_name" content="Belal Hesham - Portfolio" />
 
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@belal_aboseada" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <meta name="twitter:title" content="Belal Hesham - Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Professional Frontend Developer specializing in React.js development and modern web technologies. Creating responsive, performant web applications with user-centered design."
+    />
+    <meta
+      name="twitter:image"
+      content="https://belal-portfolio.vercel.app/public/developer.png"
+    />
+    <meta name="twitter:site" content="@your_twitter_handle" />
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://belal-portfolio.vercel.app/" />
+
+    <!-- Structured Data (JSON-LD for Rich Snippets) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Belal Hesham",
+        "jobTitle": "Frontend Developer",
+        "url": "https://belal-portfolio.vercel.app/",
+        "sameAs": [
+          "https://www.linkedin.com/in/belal-hesham/",
+          "https://github.com/BelalAboseada",
+        ],
+        "description": "Professional Frontend Developer specializing in React.js development and modern web technologies. Creating responsive, performant web applications with user-centered design.",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://belal-portfolio.vercel.app/assets/developer.png",
+          "width": "800",
+          "height": "800",
+          "caption": "Belal Hesham Professional Photo"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cairo",
+          "addressRegion": "EG",
+          "addressCountry": "Egypt"
+        },
+        "knowsAbout": [
+          "React.js",
+          "JavaScript (ES6+)",
+          "HTML5",
+          "CSS3",
+          "Responsive Web Design",
+          "Frontend Architecture",
+          "Web Performance Optimization"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "mailto:belalaboseada@gmail.com",
+          "contactType": "professional inquiry",
+          "availableLanguage": ["English", "Arabic"]
+        },
+        {% comment %} "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Alazhur University",
+          "description": "Bachelor's Degree in Alsun"
+        } {% endcomment %}
+      }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

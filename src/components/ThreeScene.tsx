@@ -44,7 +44,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
     // Create geometry - Larger and more detailed
     const geometry = new THREE.IcosahedronGeometry(2.5, 2);
     const material = new THREE.MeshStandardMaterial({
-      color: 0x1EAEDB,
+       color: 0x74b9ff,
       metalness: 0.8,
       roughness: 0.1,
       emissive: 0x0066cc,

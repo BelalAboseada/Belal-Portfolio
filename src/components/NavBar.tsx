@@ -1,13 +1,15 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const NavBar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { toast } = useToast();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -34,6 +36,13 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  const handleDownload = () => {
+    toast({
+      title: "Resume downloaded",
+      description: "Your resume has been downloaded successfully.",
+    });
+  };
+
   return (
     <nav
       className={cn(
@@ -44,10 +53,7 @@ const NavBar: React.FC = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <Link 
-          to="/" 
-          className="text-2xl font-poppins font-bold text-glow"
-        >
+        <Link to="/" className="text-2xl font-poppins font-bold text-glow">
           <span className="text-blue-accent">B</span>elal
         </Link>
 
@@ -67,14 +73,18 @@ const NavBar: React.FC = () => {
               {link.name}
             </Link>
           ))}
-          <Button 
-            variant="default" 
+          <Button
+            onClick={handleDownload}
+            variant="default"
             size="sm"
             className="ml-4 bg-blue-accent hover:bg-blue-accent/80"
             asChild
           >
-            <a href="/belal-aboseada-cv.pdf" download>
-              Download CV
+            <a
+              href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+              download
+            >
+              Download Cv
             </a>
           </Button>
         </div>
@@ -129,14 +139,16 @@ const NavBar: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            <Button 
-              variant="default" 
-              size="sm"
-              className="bg-blue-accent hover:bg-blue-accent/80 mt-2"
+            <Button
+              onClick={handleDownload}
+              className="bg-blue-accent hover:bg-blue-accent/80"
               asChild
             >
-              <a href="/belal-aboseada-cv.pdf" download>
-                Download CV
+              <a
+                href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+                download
+              >
+                Download Cv
               </a>
             </Button>
           </div>
