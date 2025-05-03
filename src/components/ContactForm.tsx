@@ -36,7 +36,7 @@ const ContactForm: React.FC = () => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      const mailtoLink = `mailto:balalaboseada@icloud.com?subject=${encodeURIComponent(
+      const mailtoLink = `mailto:balalaboseada@mail.com?subject=${encodeURIComponent(
         data.subject
       )}&body=${encodeURIComponent(
         `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
