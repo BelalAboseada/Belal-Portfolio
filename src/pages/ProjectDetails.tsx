@@ -4,25 +4,23 @@ import { useParams, Navigate } from "react-router-dom";
 import { projects } from "@/lib/data";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { ExternalLink, Github, Images } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
+import { Slider } from "@/components/ui/slider";
 
 const ProjectDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState(
     projects.find((p) => p.id === Number(id)) || null
   );
-  const [selectedImage, setSelectedImage] = useState("");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (project) {
-      // Set the first image as the selected image initially
-      setSelectedImage(project.imageUrl);
-    }
+    setCurrentImageIndex(0);
   }, [project]);
 
   if (!project) {
@@ -34,6 +32,18 @@ const ProjectDetails: React.FC = () => {
   const screenshots = project.additionalScreenshots 
     ? [project.imageUrl, ...project.additionalScreenshots]
     : [project.imageUrl];
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? screenshots.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === screenshots.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -99,14 +109,53 @@ const ProjectDetails: React.FC = () => {
             </div>
           </div>
 
-          {/* Main Project Image */}
-          <div className="rounded-lg overflow-hidden mb-6 gradient-border">
+          {/* Main Project Image with Slider */}
+          <div className="rounded-lg overflow-hidden mb-6 gradient-border relative">
             <div className="relative aspect-video">
               <img
-                src={selectedImage}
-                alt={project.title}
+                src={screenshots[currentImageIndex]}
+                alt={`${project.title} screenshot ${currentImageIndex + 1}`}
                 className="w-full h-full object-cover"
               />
+              
+              {screenshots.length > 1 && (
+                <>
+                  {/* Navigation arrows */}
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/30 text-white hover:bg-black/50 rounded-full h-8 w-8"
+                    onClick={handlePrevImage}
+                  >
+                    <ChevronLeft size={18} />
+                  </Button>
+                  
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/30 text-white hover:bg-black/50 rounded-full h-8 w-8"
+                    onClick={handleNextImage}
+                  >
+                    <ChevronRight size={18} />
+                  </Button>
+                  
+                  {/* Navigation dots */}
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                    {screenshots.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`h-2 rounded-full transition-all ${
+                          currentImageIndex === index 
+                            ? "w-6 bg-blue-accent" 
+                            : "w-2 bg-gray-300/60 hover:bg-gray-300"
+                        }`}
+                        onClick={() => handleDotClick(index)}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/30"></div>
             </div>
           </div>
@@ -114,20 +163,24 @@ const ProjectDetails: React.FC = () => {
           {/* Thumbnails for multiple screenshots */}
           {screenshots.length > 1 && (
             <div className="mb-12">
-              <div className="flex items-center gap-2 mb-4">
-                <Images size={20} className="text-blue-accent" />
-                <h3 className="text-lg font-medium">Project Screenshots</h3>
+              <div className="flex items-center gap-4 mb-4 justify-between">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-medium">Project Screenshots</h3>
+                  <span className="text-muted-foreground text-sm">
+                    {currentImageIndex + 1}/{screenshots.length}
+                  </span>
+                </div>
               </div>
               <div className="flex gap-4 overflow-x-auto pb-4">
                 {screenshots.map((screenshot, index) => (
                   <Card 
                     key={index} 
                     className={`min-w-[150px] cursor-pointer transition-all ${
-                      selectedImage === screenshot 
+                      currentImageIndex === index 
                         ? "ring-2 ring-blue-accent scale-105" 
                         : "opacity-70 hover:opacity-100"
                     }`}
-                    onClick={() => setSelectedImage(screenshot)}
+                    onClick={() => setCurrentImageIndex(index)}
                   >
                     <CardContent className="p-2">
                       <div className="h-[80px] w-[150px] overflow-hidden rounded">
