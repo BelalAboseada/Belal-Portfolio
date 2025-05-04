@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Images } from "lucide-react";
-import { Project } from "@/lib/data";
+import { Project } from "@/lib/types";
 import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
