@@ -1,6 +1,3 @@
-import { Request4 } from '@/assets/Request4.jpg';
-import { Request2 } from '@/assets/Request3.jpg';
-
 import { Project } from "./types";
 
 // Import project images
@@ -11,8 +8,10 @@ import Request from "@/assets/Request.jpg";
 import Request_2 from "@/assets/Request2.jpg";
 import Request_3 from "@/assets/Request3.jpg";
 import Request_4 from "@/assets/Request4.jpg";
+import Request_5 from "@/assets/Request5.jpg";
 import AlamalDashboard from "@/assets/Alamal-dashboard.png";
 import TChat from "@/assets/t.chat.png";
+import TChat_2 from "@/assets/T.chat2.png";
 import CodeZone from "@/assets/Code Zone.png";
 import Bondi from "@/assets/Bondi.png";
 import Pixel from "@/assets/Pixel.png";
@@ -44,13 +43,13 @@ export const projects: Project[] = [
       "Designed and developed an admin dashboard for managing the platform",
     ],
     category: "React",
-    additionalScreenshots : [Request_2, Request_3,  Request_4],
+    additionalScreenshots : [Request_2, Request_3,  Request_4,Request_5],
   },
   {
     id: 2,
     title: "T-chat",
     description: "Dashboard for a mobile app to track tasks efficiently",
-    tags: ["React", "Tailwind CSS", "Real-time", "Api integration"],
+  tags: ["React", "Tailwind CSS", "Real-time", "Api integration"],
     imageUrl: TChat,
     demoLink: "", 
     githubLink: "",
@@ -61,6 +60,7 @@ export const projects: Project[] = [
       "Built a responsive design using CSS Grid and Flexbox",
     ],
     category: "React",
+     additionalScreenshots : [TChat_2],
   },
   {
     id: 3,
@@ -114,13 +114,13 @@ export const projects: Project[] = [
     id: 6,
     title: "Medari",
     description: "Articles Landing Page with dynamic content",
-    tags: ["HTML", "CSS", "Sass", "Django"],
+    tags: ["HTML", "CSS", "Bootstrap", "Django"],
     imageUrl: Medari,
     demoLink: "",
     githubLink: "",
     overview: [
       "Landing page for showcasing articles with dynamic content", 
-      "Built with Django backend and custom HTML/CSS/Sass UI",
+      "Built with Django backend and custom HTML/CSS/Bootstrap",
       "Integrated dynamic content loading via Django templates",
       "Fully responsive layout across devices",
       "Collaborated with backend team for seamless integration",

@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-import * as React from "react";
-import * as SliderPrimitive from "@radix-ui/react-slider";
-=======
-
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
->>>>>>> 7a82afc9c60b7674788d9bfa4fbdd87a932f185e
-
 import { cn } from "@/lib/utils";
 
 const Slider = React.forwardRef<
