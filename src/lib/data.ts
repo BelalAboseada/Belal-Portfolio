@@ -47,6 +47,7 @@ export type Project = {
   githubLink: string;
   overview: string[] ;
   category: string;
+  additionalScreenshots?: string[]; // Optional array of additional screenshots
 };
 
 export type Experience = {
@@ -111,6 +112,8 @@ export const projects: Project[] = [
       "Project Management App with roles-based access control and real-time features",
     tags: ["React", "Redux", "Tailwind CSS","Api integration" , "Axios" ,  "Real-time"],
     imageUrl: Request,
+    demoLink: "", // Empty string for projects without demo links
+    githubLink: "", // Empty string for projects without GitHub links
     overview: [
       "Implemented roles-based access control for consultants, owners, and contractors",
       "Created dynamic roles for users with different permissions",
@@ -127,6 +130,8 @@ export const projects: Project[] = [
     description: "Dashboard for a mobile app to track tasks efficiently",
     tags: ["React", "Tailwind CSS", "Real-time", "Api integration"],
     imageUrl: TChat,
+    demoLink: "", 
+    githubLink: "",
     overview: [
       "Dashboard for a mobile app to track tasks efficiently",
       "Implemented a user-friendly interface for easy navigation",
@@ -141,6 +146,8 @@ export const projects: Project[] = [
     description: "Medical sales management system with comprehensive features",
     tags: ["React", "Redux", "Axios", "Api integration", "Tailwind CSS"],
     imageUrl: AlamalDashboard,
+    demoLink: "",
+    githubLink: "",
     overview: [
       "Implemented functionalities for medical representatives, pharmacies, and sales managers",
       "Created dynamic roles for different user types",
@@ -164,6 +171,7 @@ export const projects: Project[] = [
       "Responsive design with smooth animations",
     ],
     category: "React",
+    additionalScreenshots: [CodeZone, Pixel], // Example of additional screenshots
   },
 
   {
@@ -325,6 +333,7 @@ export const projects: Project[] = [
       "Interactive elements and smooth transitions",
     ],
     category: "HTML & CSS",
+    additionalScreenshots: [Bondi, Crud, TwitterClone], // Example of additional screenshots
   },
 ];
 

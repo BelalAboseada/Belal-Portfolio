@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Images } from "lucide-react";
 import { Project } from "@/lib/data";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,9 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  // Check if project has additional screenshots
+  const hasMultipleScreenshots = project.additionalScreenshots?.length > 0;
+
   return (
     <Card className="overflow-hidden bg-card hover:shadow-lg transition-all duration-300 gradient-border group hover:scale-[1.01] box-glow">
       <Link to={`/projects/${project.id}`} className="block">
@@ -22,6 +25,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+          
+          {/* Indicator for multiple screenshots */}
+          {hasMultipleScreenshots && (
+            <div className="absolute top-2 right-2 bg-card/80 p-1 rounded-md flex items-center gap-1">
+              <Images size={14} className="text-blue-accent" />
+              <span className="text-xs font-medium">{project.additionalScreenshots!.length + 1}</span>
+            </div>
+          )}
         </div>
 
         <CardContent className="pt-6">

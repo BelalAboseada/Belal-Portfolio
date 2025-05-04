@@ -4,24 +4,36 @@ import { useParams, Navigate } from "react-router-dom";
 import { projects } from "@/lib/data";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 
 const ProjectDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState(
     projects.find((p) => p.id === Number(id)) || null
   );
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (project) {
+      // Set the first image as the selected image initially
+      setSelectedImage(project.imageUrl);
+    }
+  }, [project]);
 
   if (!project) {
     return <Navigate to="/projects" replace />;
   }
+
+  // Create an array of screenshots - use the main imageUrl as the first one
+  // and add additional screenshots if they exist
+  const screenshots = project.additionalScreenshots 
+    ? [project.imageUrl, ...project.additionalScreenshots]
+    : [project.imageUrl];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -88,16 +100,49 @@ const ProjectDetails: React.FC = () => {
           </div>
 
           {/* Main Project Image */}
-          <div className="rounded-lg overflow-hidden mb-12 gradient-border">
+          <div className="rounded-lg overflow-hidden mb-6 gradient-border">
             <div className="relative aspect-video">
               <img
-                src={project.imageUrl}
+                src={selectedImage}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/30"></div>
             </div>
           </div>
+
+          {/* Thumbnails for multiple screenshots */}
+          {screenshots.length > 1 && (
+            <div className="mb-12">
+              <div className="flex items-center gap-2 mb-4">
+                <Images size={20} className="text-blue-accent" />
+                <h3 className="text-lg font-medium">Project Screenshots</h3>
+              </div>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {screenshots.map((screenshot, index) => (
+                  <Card 
+                    key={index} 
+                    className={`min-w-[150px] cursor-pointer transition-all ${
+                      selectedImage === screenshot 
+                        ? "ring-2 ring-blue-accent scale-105" 
+                        : "opacity-70 hover:opacity-100"
+                    }`}
+                    onClick={() => setSelectedImage(screenshot)}
+                  >
+                    <CardContent className="p-2">
+                      <div className="h-[80px] w-[150px] overflow-hidden rounded">
+                        <img
+                          src={screenshot}
+                          alt={`${project.title} screenshot ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Project Overview */}
           <div className="mb-12">
