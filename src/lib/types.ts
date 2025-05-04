@@ -7,8 +7,8 @@ export type Project = {
   description: string;
   tags: string[];
   imageUrl: string;
-  demoLink: string;
-  githubLink: string;
+  demoLink?: string;
+  githubLink?: string;
   overview: string[];
   category: string;
   additionalScreenshots?: string[]; // Optional array of additional screenshots

@@ -1,3 +1,5 @@
+import { Request4 } from '@/assets/Request4.jpg';
+import { Request2 } from '@/assets/Request3.jpg';
 
 import { Project } from "./types";
 
@@ -6,6 +8,9 @@ import Movix from "@/assets/Movix2.png";
 import Medari from "@/assets/Mdari.png";
 import MockMate from "@/assets/MockMate.png";
 import Request from "@/assets/Request.jpg";
+import Request_2 from "@/assets/Request2.jpg";
+import Request_3 from "@/assets/Request3.jpg";
+import Request_4 from "@/assets/Request4.jpg";
 import AlamalDashboard from "@/assets/Alamal-dashboard.png";
 import TChat from "@/assets/t.chat.png";
 import CodeZone from "@/assets/Code Zone.png";
@@ -19,6 +24,7 @@ import Todo from "@/assets/Todo.png";
 import YumDash from "@/assets/Screenshot (44).png";
 import Zakat from "@/assets/Screenshot (6).png";
 
+
 export const projects: Project[] = [
   {
     id: 1,
@@ -27,8 +33,8 @@ export const projects: Project[] = [
       "Project Management App with roles-based access control and real-time features",
     tags: ["React", "Redux", "Tailwind CSS","Api integration" , "Axios" ,  "Real-time"],
     imageUrl: Request,
-    demoLink: "", // Empty string for projects without demo links
-    githubLink: "", // Empty string for projects without GitHub links
+    demoLink: "",
+    githubLink: "", 
     overview: [
       "Implemented roles-based access control for consultants, owners, and contractors",
       "Created dynamic roles for users with different permissions",
@@ -38,6 +44,7 @@ export const projects: Project[] = [
       "Designed and developed an admin dashboard for managing the platform",
     ],
     category: "React",
+    additionalScreenshots : [Request_2, Request_3,  Request_4],
   },
   {
     id: 2,
@@ -86,7 +93,6 @@ export const projects: Project[] = [
       "Responsive design with smooth animations",
     ],
     category: "React",
-    additionalScreenshots: [CodeZone, Pixel], // Example of additional screenshots
   },
   {
     id: 5,
