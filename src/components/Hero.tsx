@@ -1,9 +1,9 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import ThreeScene from "@/components/ThreeScene";
-import AnimatedText from "@/components/AnimatedText";
 import { Link } from "react-router-dom";
+import RotatingText from "@/components/ui/rotating-text";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Hero: React.FC = () => {
   return (
@@ -11,13 +11,34 @@ const Hero: React.FC = () => {
       <div className="container grid md:grid-cols-2 gap-8 items-center pt-20">
         <div className="z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-poppins">
-            Hello, I'm <span className="text-blue-accent text-glow">Belal Aboseada</span>
+            Hello, I'm{" "}
+            <span className="text-blue-accent text-glow">Belal Aboseada</span>
           </h1>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-6 text-muted-foreground">
-            <AnimatedText
-              texts={["Front-End Developer", "Web developer", "React developer"]}
-              className="text-white font-poppins"
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-6 text-muted-foreground flex items-center gap-2">
+            <RotatingText
+              texts={["Front-End", "Web", "React"]}
+              mainClassName="text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg inline-block"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
             />
+            <AnimatePresence mode="wait">
+              <motion.span
+                key="developer"
+                className="text-white whitespace-nowrap inline-block"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              >
+                developer
+              </motion.span>
+            </AnimatePresence>
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-lg">
             I build responsive and interactive web experiences with modern
