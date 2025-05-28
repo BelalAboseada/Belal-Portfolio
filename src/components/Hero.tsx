@@ -22,9 +22,14 @@ const Hero: React.FC = () => {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-120%" }}
-              staggerDuration={0.025}
+              staggerDuration={0.01}
               splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 300,
+                mass: 0.5,
+              }}
               rotationInterval={2000}
             />
             <AnimatePresence mode="wait">
@@ -34,7 +39,13 @@ const Hero: React.FC = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-120%" }}
-                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                transition={{
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 300,
+                  mass: 0.5,
+                  delay: 0.01,
+                }}
               >
                 developer
               </motion.span>
