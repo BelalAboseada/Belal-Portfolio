@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
               transition={{
                 type: "spring",
                 damping: 25,
-                stiffness: 300,
+                stiffness: 200,
                 mass: 0.5,
               }}
               rotationInterval={2000}
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
                 transition={{
                   type: "spring",
                   damping: 25,
-                  stiffness: 300,
+                  stiffness: 100,
                   mass: 0.5,
                   delay: 0.01,
                 }}

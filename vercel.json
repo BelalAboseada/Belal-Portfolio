@@ -1,0 +1,26 @@
+{
+  "rewrites": [
+    // Rewrite all requests to the root unless they match an API route
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/static/(.*)", "destination": "/static/$1" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-route",
+      "destination": "/new-route",
+      "permanent": true
+    }
+  ]
+}
