@@ -7,9 +7,8 @@ interface ExperienceTimelineProps {
   experiences: Experience[];
 }
 
-const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
-  experiences,
-}) => {
+function ExperienceTimeline(props: ExperienceTimelineProps): JSX.Element {
+  const { experiences } = props;
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -78,7 +77,9 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
             <div
               className={cn(
                 "relative w-7 h-7 rounded-full text-white bg-background border-2 border-blue-accent flex items-center justify-center text-sm font-medium transition-all duration-700 ease-in-out hover:scale-110 hover:bg-blue-accent/10 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 shadow-lg",
-                index <= activeIndex ? "bg-blue-accent scale-110 " : "scale-90 ",
+                index <= activeIndex
+                  ? "bg-blue-accent scale-110 "
+                  : "scale-90 ",
                 index % 2 === 0 ? "md:ml-0" : "md:ml-0"
               )}
             >
@@ -144,6 +145,6 @@ const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({
       ))}
     </div>
   );
-};
+}
 
 export default ExperienceTimeline;

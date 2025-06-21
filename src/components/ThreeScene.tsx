@@ -5,10 +5,13 @@ interface ThreeSceneProps {
   className?: string;
 }
 
-const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
+function ThreeScene({ className }: ThreeSceneProps): JSX.Element {
   const mountRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [previousMousePosition, setPreviousMousePosition] = useState({ x: 0, y: 0 });
+  const [previousMousePosition, setPreviousMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -26,14 +29,17 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setClearColor(0x000000, 0);
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
     mountRef.current.appendChild(renderer.domElement);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0x4A9DFF, 2);
+    const pointLight = new THREE.PointLight(0x4a9dff, 2);
     pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
 
@@ -44,14 +50,14 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
     // Create geometry - Larger and more detailed
     const geometry = new THREE.IcosahedronGeometry(2.5, 2);
     const material = new THREE.MeshStandardMaterial({
-       color: 0x74b9ff,
+      color: 0x74b9ff,
       metalness: 0.8,
       roughness: 0.1,
       emissive: 0x0066cc,
       emissiveIntensity: 0.3,
       wireframe: true,
     });
-    
+
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
@@ -60,7 +66,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
       setIsDragging(true);
       setPreviousMousePosition({
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
     };
 
@@ -73,7 +79,7 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
 
       const deltaMove = {
         x: event.clientX - previousMousePosition.x,
-        y: event.clientY - previousMousePosition.y
+        y: event.clientY - previousMousePosition.y,
       };
 
       mesh.rotation.y += deltaMove.x * 0.01;
@@ -81,13 +87,13 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
 
       setPreviousMousePosition({
         x: event.clientX,
-        y: event.clientY
+        y: event.clientY,
       });
     };
 
-    mountRef.current.addEventListener('mousedown', handleMouseDown);
-    mountRef.current.addEventListener('mouseup', handleMouseUp);
-    mountRef.current.addEventListener('mousemove', handleMouseMove);
+    mountRef.current.addEventListener("mousedown", handleMouseDown);
+    mountRef.current.addEventListener("mouseup", handleMouseUp);
+    mountRef.current.addEventListener("mousemove", handleMouseMove);
 
     // Animation
     const animate = () => {
@@ -101,32 +107,36 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
 
       renderer.render(scene, camera);
     };
-    
+
     animate();
 
     // Handle window resize
     const handleResize = () => {
       if (!mountRef.current) return;
-      
-      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+
+      camera.aspect =
+        mountRef.current.clientWidth / mountRef.current.clientHeight;
       camera.updateProjectionMatrix();
-      
-      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+
+      renderer.setSize(
+        mountRef.current.clientWidth,
+        mountRef.current.clientHeight
+      );
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up
     return () => {
-      window.removeEventListener('resize', handleResize);
-      
+      window.removeEventListener("resize", handleResize);
+
       if (mountRef.current) {
-        mountRef.current.removeEventListener('mousedown', handleMouseDown);
-        mountRef.current.removeEventListener('mouseup', handleMouseUp);
-        mountRef.current.removeEventListener('mousemove', handleMouseMove);
+        mountRef.current.removeEventListener("mousedown", handleMouseDown);
+        mountRef.current.removeEventListener("mouseup", handleMouseUp);
+        mountRef.current.removeEventListener("mousemove", handleMouseMove);
         mountRef.current.removeChild(renderer.domElement);
       }
-      
+
       scene.remove(mesh);
       geometry.dispose();
       material.dispose();
@@ -134,6 +144,6 @@ const ThreeScene: React.FC<ThreeSceneProps> = ({ className }) => {
   }, [isDragging, previousMousePosition]);
 
   return <div ref={mountRef} className={className} />;
-};
+}
 
 export default ThreeScene;

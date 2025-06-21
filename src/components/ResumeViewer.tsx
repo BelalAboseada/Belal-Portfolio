@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const ResumeViewer: React.FC = () => {
+function ResumeViewer(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
@@ -58,11 +58,10 @@ const ResumeViewer: React.FC = () => {
           } transition-opacity duration-300`}
           onLoad={handleIframeLoad}
           title="Resume"
-
         />
       </div>
     </div>
   );
-};
+}
 
-export default ResumeViewer;
+export default React.memo(ResumeViewer);

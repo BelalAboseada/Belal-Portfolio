@@ -9,10 +9,7 @@ interface ProjectImageGalleryProps {
   screenshots: string[];
 }
 
-const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
-  title,
-  screenshots,
-}) => {
+function ProjectImageGallery(props: ProjectImageGalleryProps): JSX.Element {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
 
@@ -21,7 +18,7 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
       e.stopPropagation();
     }
     setCurrentImageIndex((prev) =>
-      prev === 0 ? screenshots.length - 1 : prev - 1
+      prev === 0 ? props.screenshots.length - 1 : prev - 1
     );
   };
 
@@ -30,7 +27,7 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
       e.stopPropagation();
     }
     setCurrentImageIndex((prev) =>
-      prev === screenshots.length - 1 ? 0 : prev + 1
+      prev === props.screenshots.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -54,8 +51,8 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
           onClick={handleImageClick}
         >
           <img
-            src={screenshots[currentImageIndex]}
-            alt={`${title} screenshot ${currentImageIndex + 1}`}
+            src={props.screenshots[currentImageIndex]}
+            alt={`${props.title} screenshot ${currentImageIndex + 1}`}
             className="w-full h-full object-cover -z-10"
           />
 
@@ -71,7 +68,7 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
             <Maximize size={18} />
           </button>
 
-          {screenshots.length > 1 && (
+          {props.screenshots.length > 1 && (
             <>
               {/* Navigation arrows */}
               <Button
@@ -100,7 +97,7 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
 
               {/* Navigation dots */}
               <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                {screenshots.map((_, index) => (
+                {props.screenshots.map((_, index) => (
                   <button
                     key={index}
                     className={`h-2 rounded-full transition-all z-10 ${
@@ -127,12 +124,12 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
         <DialogContent className="max-w-5xl w-[95vw] p-1 bg-background/95 backdrop-blur-sm">
           <div className="relative">
             <img
-              src={screenshots[currentImageIndex]}
-              alt={title}
+              src={props.screenshots[currentImageIndex]}
+              alt={props.title}
               className="w-full h-full object-contain rounded-md -z-10"
             />
 
-            {screenshots.length > 1 && (
+            {props.screenshots.length > 1 && (
               <>
                 <Button
                   variant="ghost"
@@ -153,7 +150,7 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
                 </Button>
 
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                  {screenshots.map((_, index) => (
+                  {props.screenshots.map((_, index) => (
                     <button
                       key={index}
                       className={`h-2 rounded-full transition-all z-30 ${
@@ -178,14 +175,14 @@ const ProjectImageGallery: React.FC<ProjectImageGalleryProps> = ({
 
       {/* Thumbnail section */}
       <ProjectThumbnails
-        title={title}
-        screenshots={screenshots}
+        title={props.title}
+        screenshots={props.screenshots}
         currentImageIndex={currentImageIndex}
         setCurrentImageIndex={setCurrentImageIndex}
       />
     </>
   );
-};
+}
 
 export default ProjectImageGallery;
 
@@ -211,7 +208,7 @@ const ProjectThumbnails: React.FC<ProjectThumbnailsProps> = ({
     <div className="mb-12">
       <div className="flex items-center gap-4 mb-4 justify-between">
         <div className="flex items-center gap-2">
-          <Images size={20}  className="text-blue-accent" />
+          <Images size={20} className="text-blue-accent" />
           <h3 className="text-lg font-medium">Project Screenshots</h3>
           <span className="text-muted-foreground text-sm">
             {currentImageIndex + 1}/{screenshots.length}

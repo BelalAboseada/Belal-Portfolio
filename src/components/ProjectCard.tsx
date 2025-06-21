@@ -16,7 +16,7 @@ interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+function ProjectCard({ project }: ProjectCardProps): JSX.Element {
   // Get all project images
   const allImages = project.additionalScreenshots
     ? [project.imageUrl, ...project.additionalScreenshots]
@@ -56,6 +56,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <img
             src={allImages[currentImageIndex]}
             alt={project.title}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
@@ -169,6 +170,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       </CardFooter>
     </Card>
   );
-};
+}
 
 export default ProjectCard;

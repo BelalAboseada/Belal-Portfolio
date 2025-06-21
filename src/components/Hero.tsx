@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import RotatingText from "@/components/ui/rotating-text";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Hero: React.FC = () => {
+function Hero(): JSX.Element {
   return (
     <section className="min-h-screen relative flex items-center overflow-hidden">
       <div className="container grid md:grid-cols-2 gap-8 items-center pt-20">
@@ -88,6 +88,6 @@ const Hero: React.FC = () => {
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-accent/10 rounded-full blur-[100px] z-0" />
     </section>
   );
-};
+}
 
 export default Hero;

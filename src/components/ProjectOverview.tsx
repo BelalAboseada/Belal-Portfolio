@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 
@@ -6,7 +5,7 @@ interface ProjectOverviewProps {
   overview: string[];
 }
 
-const ProjectOverview: React.FC<ProjectOverviewProps> = ({ overview }) => {
+function ProjectOverview({ overview }: ProjectOverviewProps): JSX.Element {
   return (
     <div className="mb-12">
       <h2 className="text-2xl font-bold mb-6">Project Overview</h2>
@@ -28,6 +27,6 @@ const ProjectOverview: React.FC<ProjectOverviewProps> = ({ overview }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProjectOverview;

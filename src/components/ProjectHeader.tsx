@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ interface ProjectHeaderProps {
   project: Project;
 }
 
-const ProjectHeader: React.FC<ProjectHeaderProps> = ({ project }) => {
+function ProjectHeader({ project }: ProjectHeaderProps): JSX.Element {
   return (
     <div className="mb-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
@@ -57,17 +56,13 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ project }) => {
       </p>
       <div className="flex flex-wrap gap-2 mb-8">
         {project.tags.map((tag) => (
-          <Badge
-            key={tag}
-            variant="secondary"
-            className="bg-muted text-sm"
-          >
+          <Badge key={tag} variant="secondary" className="bg-muted text-sm">
             {tag}
           </Badge>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default ProjectHeader;

@@ -1,4 +1,3 @@
-
 import { Skill } from "./types";
 
 // Import skill icons
@@ -36,7 +35,7 @@ export const skillsData: Skill[] = [
   { id: 12, title: "Api", img: Api, Cat: "Skills" },
   { id: 13, title: "Deploy", img: Deploy, Cat: "Skills" },
   { id: 14, title: "VS Code", img: Vscode, Cat: "Tools" },
-  { id: 15, title: "ChatGpt", img: Gpt, Cat: "Tools" },
+  { id: 15, title: "Ai", img: Gpt, Cat: "Tools" },
   { id: 16, title: "tailwind css", img: tailwind, Cat: "Skills" },
   { id: 17, title: "deep seek", img: deepseek, Cat: "Tools" },
   { id: 18, title: "Agile(Scrum)", img: Agile, Cat: "Tools" },

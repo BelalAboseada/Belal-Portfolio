@@ -1,8 +1,7 @@
-
 import React from "react";
 import { socialLinks } from "@/lib/data";
 
-const Footer: React.FC = () => {
+function Footer(): JSX.Element {
   return (
     <footer className="bg-darker-bg py-8 border-t border-muted mt-auto">
       <div className="container">
@@ -31,6 +30,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}
 
-export default Footer;
+export default React.memo(Footer);

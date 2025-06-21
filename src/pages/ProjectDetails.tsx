@@ -9,7 +9,7 @@ import ProjectImageGallery from "@/components/ProjectImageGallery";
 import ProjectThumbnails from "@/components/ProjectThumbnails";
 import ProjectOverview from "@/components/ProjectOverview";
 
-const ProjectDetails: React.FC = () => {
+function ProjectDetails(): JSX.Element {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState(
     projects.find((p) => p.id === Number(id)) || null
@@ -65,6 +65,6 @@ const ProjectDetails: React.FC = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default ProjectDetails;

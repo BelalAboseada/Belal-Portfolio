@@ -16,7 +16,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const ContactForm: React.FC = () => {
+function ContactForm(): JSX.Element {
   const { toast } = useToast();
 
   const {
@@ -59,7 +59,6 @@ const ContactForm: React.FC = () => {
       });
     }
   };
-
 
   const FormField = ({
     id,
@@ -145,6 +144,6 @@ const ContactForm: React.FC = () => {
       </Button>
     </form>
   );
-};
+}
 
-export default ContactForm;
+export default React.memo(ContactForm);

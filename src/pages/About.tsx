@@ -1,14 +1,19 @@
 import React, { useCallback, useMemo, useState } from "react";
-import {  education, aboutMe, skillsData } from "@/lib/data";
+import { education, aboutMe, skillsData } from "@/lib/data";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@radix-ui/react-tooltip';
-import * as TooltipPrimitives from '@radix-ui/react-tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@radix-ui/react-tooltip";
+import * as TooltipPrimitives from "@radix-ui/react-tooltip";
 
-const About: React.FC = () => {
+function About(): JSX.Element {
   const [category, setCategory] = useState("Skills");
   const [selectedTab, setSelectedTab] = useState(0);
   const [left, setLeft] = useState(0);
@@ -120,40 +125,37 @@ const About: React.FC = () => {
               </div>
             </div>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
-             {filteredSkills.map(({ title, img }, index) => (
-  <TooltipProvider key={index}>
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <div
-          className="img group relative"
-          data-aos="fade-down"
-          data-aos-anchor-placement="top-left"
-          data-aos-duration="900"
-          aria-label={`Skills ${title}`}
-        >
-          <img
-            src={img}
-            alt={title}
-            className="max-w-16 max-h-16 w-full h-full m-auto rounded-lg bg-muted p-3 transition-transform transform "
-            loading="lazy"
-          />
-        </div>
-      </TooltipTrigger>
-      <TooltipContent
-        className="bg-blue-accent text-white text-sm px-2 py-1 rounded-lg shadow-lg"
-      >
-        {title}
-        <TooltipPrimitives.Arrow
-          className="-my-px border-none fill-blue-accent "
-          width={12}
-          height={7}
-          aria-hidden="true"
-        />
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
-))}
-
+              {filteredSkills.map(({ title, img }, index) => (
+                <TooltipProvider key={index}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div
+                        className="img group relative"
+                        data-aos="fade-down"
+                        data-aos-anchor-placement="top-left"
+                        data-aos-duration="900"
+                        aria-label={`Skills ${title}`}
+                      >
+                        <img
+                          src={img}
+                          alt={title}
+                          className="max-w-16 max-h-16 w-full h-full m-auto rounded-lg bg-muted p-3 transition-transform transform "
+                          loading="lazy"
+                        />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-blue-accent text-white text-sm px-2 py-1 rounded-lg shadow-lg">
+                      {title}
+                      <TooltipPrimitives.Arrow
+                        className="-my-px border-none fill-blue-accent "
+                        width={12}
+                        height={7}
+                        aria-hidden="true"
+                      />
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
             </div>
           </div>
         </section>
@@ -183,6 +185,6 @@ const About: React.FC = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default About;

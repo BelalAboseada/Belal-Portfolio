@@ -5,34 +5,33 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-const NavBar: React.FC = () => {
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Experience", path: "/experience" },
+  { name: "Contact", path: "/contact" },
+  { name: "Resume", path: "/resume" },
+];
+
+function NavBar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { toast } = useToast();
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Experience", path: "/experience" },
-    { name: "Contact", path: "/contact" },
-    { name: "Resume", path: "/resume" },
-  ];
-
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
     const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setScrolled(window.scrollY > 50);
+      }, 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
     };
   }, []);
 
@@ -93,6 +92,8 @@ const NavBar: React.FC = () => {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden text-white focus:outline-none"
+          title={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
           <svg
             className="w-6 h-6"
@@ -156,6 +157,6 @@ const NavBar: React.FC = () => {
       )}
     </nav>
   );
-};
+}
 
-export default NavBar;
+export default React.memo(NavBar);

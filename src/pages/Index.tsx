@@ -1,4 +1,3 @@
-
 import React from "react";
 import Hero from "@/components/Hero";
 import ProjectCard from "@/components/ProjectCard";
@@ -8,14 +7,14 @@ import { projects } from "@/lib/data";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-const Index: React.FC = () => {
+function Index(): JSX.Element {
   // Show only the first 3 projects on the home page
   const featuredProjects = projects.slice(0, 3);
 
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
-      
+
       <main>
         <Hero />
 
@@ -45,7 +44,10 @@ const Index: React.FC = () => {
             <div className="md:w-1/2">
               <h2 className="section-title">About Me</h2>
               <p className="mb-6 text-muted-foreground">
-                I'm a passionate Front-End Developer specializing in creating engaging and responsive web experiences. With a strong foundation in modern JavaScript frameworks and libraries, I enjoy bringing designs to life through clean, efficient code.
+                I'm a passionate Front-End Developer specializing in creating
+                engaging and responsive web experiences. With a strong
+                foundation in modern JavaScript frameworks and libraries, I
+                enjoy bringing designs to life through clean, efficient code.
               </p>
               <Button
                 className="bg-blue-accent hover:bg-blue-accent/80"
@@ -56,7 +58,9 @@ const Index: React.FC = () => {
             </div>
             <div className="md:w-1/2 relative">
               <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-blue-accent/20 to-purple-accent/20 rounded-lg flex items-center justify-center p-10">
-                <div className="text-6xl font-bold text-center text-glow text-blue-accent">B</div>
+                <div className="text-6xl font-bold text-center text-glow text-blue-accent">
+                  B
+                </div>
               </div>
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-accent/10 via-transparent to-purple-accent/10 blur-xl -z-10" />
@@ -68,9 +72,12 @@ const Index: React.FC = () => {
         <section className="section bg-darker-bg relative overflow-hidden">
           <div className="container relative z-10">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">Let's Work Together</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-glow">
+                Let's Work Together
+              </h2>
               <p className="text-muted-foreground mb-8">
-                Have a project in mind? Let's discuss how I can help bring your ideas to life with clean code and engaging user experiences.
+                Have a project in mind? Let's discuss how I can help bring your
+                ideas to life with clean code and engaging user experiences.
               </p>
               <Button
                 size="lg"
@@ -92,6 +99,6 @@ const Index: React.FC = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default Index;
