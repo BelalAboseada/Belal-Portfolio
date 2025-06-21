@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    // Rewrite all requests to the root unless they match an API route
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/static/(.*)", "destination": "/static/$1" },
     { "source": "/favicon.ico", "destination": "/favicon.ico" },
