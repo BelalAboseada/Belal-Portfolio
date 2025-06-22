@@ -3,6 +3,8 @@ import { Skill } from "./types";
 // Import skill icons
 import Html from "@/assets/html_ph9Z0PP.png";
 import Js from "@/assets/Js.webp";
+import Ts from "@/assets/ts.png";
+import Mongo from "@/assets/Mdb.png";
 import Css from "@/assets/css.webp";
 import React from "@/assets/React.webp";
 import Redux from "@/assets/Redux.png";
@@ -19,11 +21,13 @@ import Gpt from "@/assets/chatbot_hKae2Xk.png";
 import Agile from "@/assets/Agile.png";
 import tailwind from "@/assets/icons8-tailwind-css-48.png";
 import deepseek from "@/assets/deepSeek.png";
+import postman from "@/assets/postman.webp";
 
 export const skillsData: Skill[] = [
   { id: 1, title: "Html", img: Html, Cat: "Skills" },
-  { id: 2, title: "Javascript", img: Js, Cat: "Skills" },
+  // { id: 2, title: "Javascript", img: Js, Cat: "Skills" },
   { id: 3, title: "Css", img: Css, Cat: "Skills" },
+  { id: 2, title: "Typescript", img: Ts, Cat: "Skills" },
   { id: 4, title: "React", img: React, Cat: "Skills" },
   { id: 5, title: "Redux", img: Redux, Cat: "Skills" },
   { id: 6, title: "Firease", img: Firease, Cat: "Tools" },
@@ -39,4 +43,6 @@ export const skillsData: Skill[] = [
   { id: 16, title: "tailwind css", img: tailwind, Cat: "Skills" },
   { id: 17, title: "deep seek", img: deepseek, Cat: "Tools" },
   { id: 18, title: "Agile(Scrum)", img: Agile, Cat: "Tools" },
+  { id: 18, title: "Mongo db", img: Mongo, Cat: "Tools" },
+  { id: 18, title: "Postman", img: postman, Cat: "Tools" },
 ];
