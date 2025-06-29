@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "Managed tasks, projects, and deadlines effectively",
       "Integrated real-time chat and notification features",
       "Conducted data analysis to provide valuable insights",
-      "Designed and developed an admin dashboard for managing the platform",
+      "Designed and developed an admin dashboard for managing the platform", 
     ],
     category: "React",
     additionalScreenshots : [Request_2, Request_3,  Request_4,Request_5],
