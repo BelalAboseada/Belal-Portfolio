@@ -6,11 +6,8 @@ import { Link } from "react-router-dom";
 import { projects } from "@/lib/data";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import Logo  from "@/assets/logo.png"
+import Logo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
-
-
-
 
 function Index(): JSX.Element {
   // Show only the first 3 projects on the home page
@@ -64,14 +61,14 @@ function Index(): JSX.Element {
             <div className="md:w-1/2 relative">
               <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-blue-accent/20 to-purple-accent/20 rounded-lg flex items-center justify-center p-10">
                 {/* <div className="text-6xl font-bold text-center text-glow text-blue-accent"> */}
-<img
-  src={Logo}
-  alt="Logo"
-  className={cn(
-    "md:w-20 md:h-20 w-16 h-16 object-cover drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]"
-  )}
-  loading="lazy"
-/>
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className={cn(
+                    "md:w-20 md:h-20 w-16 h-16 object-cover drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]"
+                  )}
+                  loading="lazy"
+                />
                 {/* </div> */}
               </div>
               {/* Glow effect */}

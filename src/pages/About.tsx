@@ -12,6 +12,8 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import * as TooltipPrimitives from "@radix-ui/react-tooltip";
+import Logo  from "@/assets/logo.png"
+import { cn } from "@/lib/utils";
 
 function About(): JSX.Element {
   const [category, setCategory] = useState("Skills");
@@ -76,9 +78,17 @@ function About(): JSX.Element {
 
             <div className="relative">
               <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-blue-accent/20 to-purple-accent/20 rounded-lg p-10 flex items-center justify-center">
-                <div className="text-8xl font-bold text-blue-accent text-glow animate-float">
+                {/* <div className="text-8xl font-bold text-blue-accent text-glow animate-float">
                   B
-                </div>
+                </div> */}
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className={cn(
+                    "md:w-32 md:h-32 w-28 h-28 animate-float object-cover drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]"
+                  )}
+                  loading="lazy"
+                />
               </div>
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-accent/10 via-transparent to-purple-accent/10 blur-xl -z-10" />
