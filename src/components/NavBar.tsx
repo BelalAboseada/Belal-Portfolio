@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import Logo  from "@/assets/logo.png"
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -53,7 +54,8 @@ function NavBar(): JSX.Element {
     >
       <div className="container flex items-center justify-between">
         <Link to="/" className="text-2xl font-poppins font-bold text-glow">
-          <span className="text-blue-accent">B</span>elal
+          {/* <span className="text-blue-accent">B</span>elal */}
+         <img src={Logo} alt="Logo" className={cn("md:w-10 md:h-10 w-8  h-8 object-cover")} loading="lazy"/> 
         </Link>
 
         {/* Desktop Navigation */}
