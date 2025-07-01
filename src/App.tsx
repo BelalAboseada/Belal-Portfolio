@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +11,7 @@ import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
+import { FloatingActionButton } from "@/components/ui/floating-action-button";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +31,7 @@ const App = () => (
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FloatingActionButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
