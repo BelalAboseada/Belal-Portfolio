@@ -29,14 +29,14 @@ const socialLinks: SocialLink[] = [
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:alex@example.com",
+    href: "mailto:bealalaboseada@example.com",
     color: "bg-blue-500 hover:bg-blue-600",
     delay: 0.2,
   },
   {
     icon: Instagram,
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/belal_aboseada?igsh=c3R1MmVrNHd5bnpp&utm_source=qr",
     color:
       "bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600  hover:to-pink-600",
     delay: 0.3,
