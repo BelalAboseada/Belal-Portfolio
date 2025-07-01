@@ -29,7 +29,7 @@ const socialLinks: SocialLink[] = [
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:bealalaboseada@example.com",
+    href: "mailto:bealalaboseada@gmail.com",
     color: "bg-blue-500 hover:bg-blue-600",
     delay: 0.2,
   },
