@@ -10,9 +10,9 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+} from "@/components/ui/tooltip";
 import * as TooltipPrimitives from "@radix-ui/react-tooltip";
-import Logo  from "@/assets/logo.png"
+import Logo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 
 function About(): JSX.Element {
@@ -28,13 +28,13 @@ function About(): JSX.Element {
       setCategory(cat);
       setSelectedTab(index);
     },
-    [selectedTab]
+    [selectedTab],
   );
 
   // Filter skills based on category
   const filteredSkills = useMemo(
     () => skillsData.filter((skill) => skill.Cat === category),
-    [category]
+    [category],
   );
 
   const handleDownload = () => {
@@ -85,7 +85,7 @@ function About(): JSX.Element {
                   src={Logo}
                   alt="Logo"
                   className={cn(
-                    "md:w-32 md:h-32 w-28 h-28 animate-float object-cover drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]"
+                    "md:w-32 md:h-32 w-28 h-28 animate-float object-cover drop-shadow-[0_0_10px_rgba(59,130,246,0.6)]",
                   )}
                   loading="lazy"
                 />
@@ -135,9 +135,9 @@ function About(): JSX.Element {
               </div>
             </div>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
-              {filteredSkills.map(({ title, img }, index) => (
-                <TooltipProvider key={index}>
-                  <Tooltip>
+              <TooltipProvider delayDuration={0}>
+                {filteredSkills.map(({ title, img }, index) => (
+                  <Tooltip key={index}>
                     <TooltipTrigger asChild>
                       <div
                         className="img group relative"
@@ -164,8 +164,8 @@ function About(): JSX.Element {
                       />
                     </TooltipContent>
                   </Tooltip>
-                </TooltipProvider>
-              ))}
+                ))}
+              </TooltipProvider>
             </div>
           </div>
         </section>

@@ -11,6 +11,7 @@ import Experience from "./pages/Experience";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
+import TerminalPage from "./pages/TerminalPage";
 import { FloatingActionButton } from "@/components/ui/floating-action-button";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/experience" element={<Experience />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/terminal" element={<TerminalPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingActionButton />

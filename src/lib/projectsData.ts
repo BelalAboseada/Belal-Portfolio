@@ -22,9 +22,34 @@ import starbucks from "@/assets/Starbuks.png";
 import Todo from "@/assets/Todo.png";
 import YumDash from "@/assets/Screenshot (44).png";
 import Zakat from "@/assets/Screenshot (6).png";
+import BQ1 from "@/assets/bq_screen_1.png";
+import BQ2 from "@/assets/bq_screen_2.png";
+import BQ3 from "@/assets/bq_screen_3.png";
+import BQ4 from "@/assets/bq_screen_4.png";
+import BQ5 from "@/assets/bq_screen_5.png";
+import BQ6 from "@/assets/bq_screen_6.png";
 
 
 export const projects: Project[] = [
+  {
+    id: 0,
+    title: "Bassant ElQenawy Platform",
+    description: "MERN Stack Platform for Bassant ElQenawy",
+    tags: ["React", "Node.js", "Express", "MongoDB", "MERN Stack"],
+    imageUrl: BQ1,
+    demoLink: "https://bassantelqenwy.online/",
+    githubLink: "", 
+    overview: [
+      "Engineered a scalable multi-tenant architecture separating Student and Admin applications using React 18, TypeScript, and Vite.",
+      "Implemented advanced state management with Redux Toolkit for client state and React Query for server data caching and synchronization.",
+      "Developed a modular feature-based folder structure with strict domain isolation and type-safe API patterns.",
+      "Built comprehensive LMS features including video lessons, grade tracking, quizzes, and subscription management workflows.",
+      "Created a secure Admin Dashboard for managing users, content, and system configurations with RBAC (Role-Based Access Control).",
+      "Designed a premium, accessible UI using Tailwind CSS, Radix UI, and Framer Motion for smooth animations and responsive layouts."
+    ],
+    category: "React",
+    additionalScreenshots : [BQ2, BQ3, BQ4, BQ5, BQ6],
+  },
   {
     id: 1,
     title: "Request",

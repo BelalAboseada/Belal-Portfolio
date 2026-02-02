@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import Logo  from "@/assets/logo.png"
+import Logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -49,31 +49,40 @@ function NavBar(): JSX.Element {
         "fixed w-full z-50 transition-all duration-300",
         scrolled
           ? "py-2 bg-darker-bg/90 backdrop-blur-md shadow-md"
-          : "py-4 bg-transparent"
+          : "py-4 bg-transparent",
       )}
     >
       <div className="container flex items-center justify-between">
-        <Link to="/" className="text-2xl font-poppins font-bold text-glow">
-          {/* <span className="text-blue-accent">B</span>elal */}
-         <img src={Logo} alt="Logo" className={cn("md:w-10 md:h-10 w-8  h-8 object-cover")} loading="lazy"/> 
-        </Link>
+        <div className="flex items-center space-x-1">
+          <Link to="/" className="text-2xl font-poppins font-bold text-glow">
+            {/* <span className="text-blue-accent">B</span>elal */}
+            <img
+              src={Logo}
+              alt="Logo"
+              className={cn("md:w-10 md:h-10 w-8  h-8 object-cover")}
+              loading="lazy"
+            />
+          </Link>
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={cn(
+                  "px-4 py-2 rounded-md text-sm font-medium transition-colors",
+                  location.pathname === link.path
+                    ? "text-blue-accent"
+                    : "text-muted-foreground hover:text-white",
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={cn(
-                "px-4 py-2 rounded-md text-sm font-medium transition-colors",
-                location.pathname === link.path
-                  ? "text-blue-accent"
-                  : "text-muted-foreground hover:text-white"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
           <Button
             onClick={handleDownload}
             variant="default"
@@ -135,7 +144,7 @@ function NavBar(): JSX.Element {
                   "px-4 py-3 rounded-md text-sm font-medium transition-colors",
                   location.pathname === link.path
                     ? "text-blue-accent bg-muted/10"
-                    : "text-muted-foreground hover:text-white hover:bg-muted/10"
+                    : "text-muted-foreground hover:text-white hover:bg-muted/10",
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
