@@ -27,7 +27,7 @@ function ResumeViewer(): JSX.Element {
           asChild
         >
           <a
-            href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+            href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
             download
           >
             <Download size={16} className="mr-2" /> Download PDF
@@ -52,7 +52,7 @@ function ResumeViewer(): JSX.Element {
 
         {/* PDF iframe */}
         <iframe
-          src="https://drive.google.com/file/d/1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs/preview"
+          src="https://drive.google.com/file/d/1orMEF3oglnU5wRvENlJx-G3rOnHfYosU/preview"
           className={`w-full h-full rounded-lg hidden md:block ${
             isLoading ? "opacity-0" : "opacity-100"
           } transition-opacity duration-300`}

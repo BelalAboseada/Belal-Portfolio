@@ -68,7 +68,7 @@ function About(): JSX.Element {
                 asChild
               >
                 <a
-                  href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+                  href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
                   download
                 >
                   <FileText size={16} className="mr-2" /> Download CV

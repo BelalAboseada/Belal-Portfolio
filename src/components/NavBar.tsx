@@ -91,7 +91,7 @@ function NavBar(): JSX.Element {
             asChild
           >
             <a
-              href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+              href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
               download
             >
               Download Cv
@@ -157,7 +157,8 @@ function NavBar(): JSX.Element {
               asChild
             >
               <a
-                href="https://drive.google.com/uc?export=download&id=1wsTXzmI736TrNq_zMCQPLb3YbUHzkzCs"
+
+                href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
                 download
               >
                 Download Cv
