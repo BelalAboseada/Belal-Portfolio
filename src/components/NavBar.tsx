@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { RamadanToggle } from "@/lib/ramadan-mode";
 import Logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -83,6 +84,7 @@ function NavBar(): JSX.Element {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
+          <RamadanToggle />
           <Button
             onClick={handleDownload}
             variant="default"
@@ -151,13 +153,18 @@ function NavBar(): JSX.Element {
                 {link.name}
               </Link>
             ))}
+            <div className="flex items-center justify-between px-4 py-2">
+              <span className="text-sm font-medium text-muted-foreground">
+                Ramadan Mode
+              </span>
+              <RamadanToggle />
+            </div>
             <Button
               onClick={handleDownload}
               className="bg-blue-accent hover:bg-blue-accent/80"
               asChild
             >
               <a
-
                 href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
                 download
               >

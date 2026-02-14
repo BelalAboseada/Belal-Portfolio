@@ -35,6 +35,11 @@
     --ring: 196 82% 48%;
 
     --radius: 0.5rem;
+
+    /* Ramadan Mode Font & Colors */
+    --font-ar:
+      "SF Arabic", -apple-system, "SF Pro Display", "SF Pro Text",
+      "Helvetica Neue", Arial, sans-serif;
   }
 }
 
@@ -55,7 +60,7 @@
       rgba(15, 15, 15, 0) 70%
     );
   }
-  
+
   h1,
   h2,
   h3,
@@ -64,7 +69,24 @@
   h6 {
     @apply font-poppins font-bold;
   }
-  button{
+
+  /* Ramadan Mode Utility */
+  .font-ar {
+    font-family: var(--font-ar);
+    font-weight: 500;
+  }
+
+  /* Isolated Ramadan Styles */
+  .ramadan .ramadan-button-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .ramadan .ramadan-button-glow:hover {
+    box-shadow: 0 0 20px rgba(253, 224, 71, 0.3);
+    border-color: rgba(253, 224, 71, 0.4);
+  }
+
+  button {
     @apply cursor-pointer;
   }
 
@@ -104,7 +126,8 @@
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(45deg, #1eaedb, #9b87f5);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -188,10 +211,12 @@
   }
 
   @keyframes blink {
-    0%, 50% {
+    0%,
+    50% {
       opacity: 1;
     }
-    51%, 100% {
+    51%,
+    100% {
       opacity: 0;
     }
   }
@@ -215,8 +240,6 @@
   .terminal-input::placeholder {
     @apply text-gray-600;
   }
-
-
 }
 /* 
 input:invalid:not(:placeholder-shown),

@@ -1,11 +1,15 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 import RotatingText from "@/components/ui/rotating-text";
 import { motion, AnimatePresence } from "framer-motion";
 import Antigravity from "@/components/Antigravity";
+import { useRamadanMode, RamadanOverlay } from "@/lib/ramadan-mode";
 
 function Hero(): JSX.Element {
+  const { isRamadanMode } = useRamadanMode();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-bg">
       {/* Background */}
@@ -43,7 +47,13 @@ function Hero(): JSX.Element {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            Available for Freelance
+            {isRamadanMode ? (
+              <span>
+                Available • <span className="font-ar">متاح للعمل الحر</span>
+              </span>
+            ) : (
+              "Available for Freelance"
+            )}
           </div>
 
           <div className="space-y-2">
@@ -80,7 +90,10 @@ function Hero(): JSX.Element {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 pt-4">
             <Button
               size="lg"
-              className="relative overflow-hidden bg-white text-black hover:bg-white/90 border-0 shadow-lg shadow-white/10 transition-all duration-300 hover:-translate-y-1 rounded-full px-10 py-7 text-lg font-medium tracking-tight"
+              className={cn(
+                "relative overflow-hidden bg-white text-black hover:bg-white/90 border-0 shadow-lg shadow-white/10 transition-all duration-300 hover:-translate-y-1 rounded-full px-10 py-7 text-lg font-medium tracking-tight",
+                isRamadanMode && "ramadan-button-glow",
+              )}
               asChild
             >
               <Link to="/projects">View Work</Link>
@@ -111,6 +124,8 @@ function Hero(): JSX.Element {
 
       {/* Subtle Gradient Overlay for blending */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-bg to-transparent pointer-events-none" />
+
+      <RamadanOverlay />
     </section>
   );
 }

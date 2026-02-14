@@ -14,27 +14,32 @@ import NotFound from "./pages/NotFound";
 import TerminalPage from "./pages/TerminalPage";
 import { FloatingActionButton } from "@/components/ui/floating-action-button";
 
+import { RamadanProvider, RamadanToast } from "./lib/ramadan-mode";
+
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:id" element={<ProjectDetails />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/terminal" element={<TerminalPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <FloatingActionButton />
-      </BrowserRouter>
+      <RamadanProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/terminal" element={<TerminalPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <FloatingActionButton />
+          <RamadanToast />
+        </BrowserRouter>
+      </RamadanProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
