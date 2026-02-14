@@ -12,9 +12,16 @@ import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
 import TerminalPage from "./pages/TerminalPage";
-import { FloatingActionButton } from "@/components/ui/floating-action-button";
+import {
+  FloatingActionButton,
+  FABStateProvider,
+} from "@/components/ui/floating-action-button";
 
-import { RamadanProvider, RamadanToast } from "./lib/ramadan-mode";
+import {
+  RamadanProvider,
+  RamadanToast,
+  FloatingRamadanToggle,
+} from "./lib/ramadan-mode";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +43,10 @@ const App = () => (
             <Route path="/terminal" element={<TerminalPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <FloatingActionButton />
+          <FABStateProvider>
+            <FloatingActionButton />
+            <FloatingRamadanToggle />
+          </FABStateProvider>
           <RamadanToast />
         </BrowserRouter>
       </RamadanProvider>

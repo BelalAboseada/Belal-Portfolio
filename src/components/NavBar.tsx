@@ -153,12 +153,12 @@ function NavBar(): JSX.Element {
                 {link.name}
               </Link>
             ))}
-            <div className="flex items-center justify-between px-4 py-2">
+            {/* <div className="flex items-center justify-between px-4 py-2">
               <span className="text-sm font-medium text-muted-foreground">
                 Ramadan Mode
               </span>
               <RamadanToggle />
-            </div>
+            </div> */}
             <Button
               onClick={handleDownload}
               className="bg-blue-accent hover:bg-blue-accent/80"

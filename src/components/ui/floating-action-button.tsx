@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageCircle,
@@ -43,8 +43,32 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+// Context to share FAB state
+interface FABContextType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const FABContext = React.createContext<FABContextType>({
+  isOpen: false,
+  setIsOpen: () => {},
+});
+
+export function useFABState() {
+  return React.useContext(FABContext);
+}
+
+export function FABStateProvider({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return (
+    <FABContext.Provider value={{ isOpen, setIsOpen }}>
+      {children}
+    </FABContext.Provider>
+  );
+}
+
 export function FloatingActionButton(): JSX.Element {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, setIsOpen } = useFABState();
 
   const toggleMenu = (): void => {
     setIsOpen((prev) => !prev);
