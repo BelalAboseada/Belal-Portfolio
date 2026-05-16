@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ─── Theme Design Tokens (Tailwind v4) ─── */
+@theme {
+  /* Fonts */
+  --font-display: "Cairo", "Inter", sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "Fira Mono", "Courier New", monospace;
+
+  /* Brand Colors */
+  --color-bg:         #080810;
+  --color-surface:    #10101c;
+  --color-border:     #1e1e35;
+  --color-accent:     #E63946;
+  --color-navy:       #1d3557;
+  --color-text:       #f0f0f5;
+  --color-text-muted: #8a8a9e;
+  
+  /* Legacy aliases to prevent breakage in other components */
+  --color-red:        #E63946;
+  --color-muted:      #8a8a9e;
+
+  /* Custom Animations */
+  --animate-pulse-gentle: pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-scroll-drip: scroll-drip 1.5s ease-in-out infinite;
+}
+
+/* ─── Base Resets ─── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
+  :selection{
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
+
+  /* Hide default cursor on desktop — Cursor.tsx handles it */
+  @media (pointer: fine) {
+    * { cursor: none !important; }
+  }
+}
+
+/* ─── Custom Utilities ─── */
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1.5px var(--color-text);
+    color: transparent;
+  }
+  .text-stroke-red {
+    -webkit-text-stroke: 1.5px var(--color-red);
+    color: transparent;
+  }
+  .antigravity-hover {
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .antigravity-hover:hover {
+    transform: translateY(-12px) scale(1.02);
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+@keyframes scroll-drip {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  50%  { transform: translateY(0%); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}

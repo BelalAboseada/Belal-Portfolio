@@ -1,181 +1,118 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
-import { Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { RamadanToggle } from "@/lib/ramadan-mode";
-import Logo from "@/assets/logo.png";
+"use client";
+
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import gsap from "gsap";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Projects", path: "/projects" },
-  { name: "Experience", path: "/experience" },
-  { name: "Contact", path: "/contact" },
-  { name: "Resume", path: "/resume" },
+  { label: "About", href: "#about" },
+  { label: "Work", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
 ];
 
-function NavBar(): JSX.Element {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  const { toast } = useToast();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    const handleScroll = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setScrolled(window.scrollY > 50);
-      }, 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timeout);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleDownload = () => {
-    toast({
-      title: "Resume downloaded",
-      description: "Your resume has been downloaded successfully.",
-    });
-  };
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      gsap.fromTo(
+        ".mobile-link",
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.08, duration: 0.4, ease: "power2.out" },
+      );
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [mobileOpen]);
 
   return (
-    <nav
-      className={cn(
-        "fixed w-full z-50 transition-all duration-300",
-        scrolled
-          ? "py-2 bg-darker-bg/90 backdrop-blur-md shadow-md"
-          : "py-4 bg-transparent",
-      )}
-    >
-      <div className="container flex items-center justify-between">
-        <div className="flex items-center space-x-1">
-          <Link to="/" className="text-2xl font-poppins font-bold text-glow">
-            {/* <span className="text-blue-accent">B</span>elal */}
-            <img
-              src={Logo}
-              alt="Logo"
-              className={cn("md:w-10 md:h-10 w-8  h-8 object-cover")}
-              loading="lazy"
-            />
-          </Link>
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={cn(
-                  "px-4 py-2 rounded-md text-sm font-medium transition-colors",
-                  location.pathname === link.path
-                    ? "text-blue-accent"
-                    : "text-muted-foreground hover:text-white",
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-1">
-          <RamadanToggle />
-          <Button
-            onClick={handleDownload}
-            variant="default"
-            size="sm"
-            className="ml-4 bg-blue-accent hover:bg-blue-accent/80"
-            asChild
+    <>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 h-16 transition-all duration-400 ${
+          scrolled
+            ? "bg-[rgba(8,8,16,0.9)] backdrop-blur-[20px] border-b border-white/5"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto h-full px-6 flex items-center justify-between">
+          {/* Logo - Monogram only */}
+          <a
+            href="#"
+            className="font-display font-black text-[20px] text-[#f0f0f5] tracking-widest"
+            aria-label="Back to top"
           >
-            <a
-              href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
-              download
-            >
-              Download Cv
-            </a>
-          </Button>
-        </div>
+            BA
+          </a>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-white focus:outline-none"
-          title={isMenuOpen ? "Close menu" : "Open menu"}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-darker-bg/95 backdrop-blur-md shadow-lg animate-fade-in">
-          <div className="container py-4 flex flex-col space-y-3">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8 h-full">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={cn(
-                  "px-4 py-3 rounded-md text-sm font-medium transition-colors",
-                  location.pathname === link.path
-                    ? "text-blue-accent bg-muted/10"
-                    : "text-muted-foreground hover:text-white hover:bg-muted/10",
-                )}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            {/* <div className="flex items-center justify-between px-4 py-2">
-              <span className="text-sm font-medium text-muted-foreground">
-                Ramadan Mode
-              </span>
-              <RamadanToggle />
-            </div> */}
-            <Button
-              onClick={handleDownload}
-              className="bg-blue-accent hover:bg-blue-accent/80"
-              asChild
-            >
               <a
-                href="https://drive.google.com/uc?export=download&id=1orMEF3oglnU5wRvENlJx-G3rOnHfYosU"
-                download
+                key={link.href}
+                href={link.href}
+                className="group relative font-body text-[14px] text-[#8a8a9e] tracking-[0.05em] hover:text-[#f0f0f5] transition-colors duration-200 flex items-center h-full"
               >
-                Download Cv
+                {link.label}
+                {/* Simulated active state dot on hover for demonstration, actual active logic would go here */}
+                <span className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#1EAEDB] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               </a>
-            </Button>
+            ))}
+            <a
+              href="#contact"
+              className="ml-4 px-5 py-[10px] rounded-[6px] border border-[rgba(255,255,255,0.15)] text-[#f0f0f5] font-display font-semibold text-[14px] hover:border-[#1EAEDB] hover:text-[#1EAEDB] transition-colors duration-300 bg-transparent"
+            >
+              Hire Me
+            </a>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden w-11 h-11 border border-white/10 flex items-center justify-center hover:border-white/30 transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={
+              mobileOpen ? "Close navigation menu" : "Open navigation menu"
+            }
+          >
+            {mobileOpen ? (
+              <X size={20} className="text-[#f0f0f5]" />
+            ) : (
+              <Menu size={20} className="text-[#f0f0f5]" />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div className="fixed inset-0 bg-[#080810] z-40 flex flex-col items-center justify-center gap-10 pt-16">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="mobile-link font-display font-black text-4xl text-white hover:text-[#1EAEDB] transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMobileOpen(false)}
+            className="mobile-link font-display font-black text-4xl text-[#1EAEDB]"
+          >
+            Hire Me
+          </a>
         </div>
       )}
-    </nav>
+    </>
   );
 }
-
-export default React.memo(NavBar);
