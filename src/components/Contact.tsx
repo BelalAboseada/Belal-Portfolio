@@ -12,7 +12,6 @@ export default function Contact() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       if (!sectionRef.current || !textRef.current) return;
 
       gsap.from(Array.from(textRef.current.children), {

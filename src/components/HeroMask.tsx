@@ -21,12 +21,8 @@ export default function HeroMask() {
   const statusCardRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const vertLineRef = useRef<HTMLDivElement>(null);
-  const ctaUnderlineRef = useRef<HTMLSpanElement>(null);
-  const ctaTextRef = useRef<HTMLSpanElement>(null);
-  const arrowRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference) and (min-width: 768px)", () => {
@@ -153,40 +149,23 @@ export default function HeroMask() {
       gsap.set(dividerRef.current, { scaleX: 1 });
     });
 
-    // Handle scroll trigger refresh on image load
+    // Handle scroll trigger refresh on image load — throttle to single call
+    let refreshTimer: ReturnType<typeof setTimeout>;
     const images = document.querySelectorAll("img");
-    let loaded = 0;
-    const check = () => {
-      if (loaded >= images.length) ScrollTrigger.refresh();
-    };
     images.forEach((img) => {
-      if (img.complete) {
-        loaded++;
-        check();
-      } else
-        img.addEventListener("load", () => {
-          loaded++;
-          check();
-        });
+      img.addEventListener("load", () => {
+        clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 100);
+      });
     });
 
-    // Scroll indicator fade out on scroll
+    // Scroll indicator fade out on scroll — uses CSS transition via class toggle
+    const scrollEl = scrollIndicatorRef.current;
+    if (!scrollEl) return;
     const onScroll = () => {
-      if (window.scrollY > 100 && scrollIndicatorRef.current) {
-        gsap.to(scrollIndicatorRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          overwrite: "auto",
-        });
-      } else if (window.scrollY <= 100 && scrollIndicatorRef.current) {
-        gsap.to(scrollIndicatorRef.current, {
-          opacity: 1,
-          duration: 0.3,
-          overwrite: "auto",
-        });
-      }
+      scrollEl.style.opacity = window.scrollY > 100 ? "0" : "1";
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -202,31 +181,8 @@ export default function HeroMask() {
       className="relative w-full overflow-hidden flex flex-col md:flex-row items-end md:items-stretch"
       style={{ minHeight: "100svh", backgroundColor: "#080810" }}
     >
-      <style>{`
-        @media (max-width: 767px) {
-          @media (prefers-reduced-motion: no-preference) {
-            .mobile-animate-name { animation: fadeInY 600ms ease-out 0ms both; }
-            .mobile-animate-badge { animation: fadeIn 500ms ease-out 150ms both; }
-            .mobile-animate-btns { animation: fadeInY10 500ms ease-out 300ms both; }
-            .mobile-animate-term { animation: fadeInScale 600ms ease-out 450ms both; }
-          }
-        }
-        @keyframes fadeInY { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInY10 { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-      `}</style>
 
-      {/* Background Noise Texture */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noise)" />
-        </svg>
-      </div>
+      
 
       {/* BACKGROUND LAYER (Mobile Only Orbs) */}
       <div className="md:hidden absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -310,25 +266,15 @@ export default function HeroMask() {
         >
           <a
             href="#projects"
-            className="group relative flex items-center justify-center md:justify-start gap-2 font-display font-semibold text-[16px] text-[#f0f0f5] w-full md:w-auto h-[52px] md:h-auto border border-white/[0.15] md:border-transparent rounded-[12px] md:rounded-none bg-white/[0.06] md:bg-transparent backdrop-blur-[16px] md:backdrop-blur-none hover:border-[#00b4d8] hover:shadow-[0_0_20px_rgba(0,180,216,0.3)] md:hover:border-transparent md:hover:shadow-none transition-all duration-300"
-            onMouseEnter={() => {
-              gsap.to(ctaTextRef.current, { x: 6, duration: 0.3, ease: "power2.out" });
-              gsap.to(arrowRef.current, { opacity: 1, x: 6, duration: 0.3, ease: "power2.out" });
-              gsap.to(ctaUnderlineRef.current, { scaleX: 1, duration: 0.3, ease: "power2.out" });
-            }}
-            onMouseLeave={() => {
-              gsap.to(ctaTextRef.current, { x: 0, duration: 0.3, ease: "power2.out" });
-              gsap.to(arrowRef.current, { opacity: 0, x: -5, duration: 0.3, ease: "power2.out" });
-              gsap.to(ctaUnderlineRef.current, { scaleX: 0, duration: 0.3, ease: "power2.out" });
-            }}
+            className="cta-link group relative flex items-center justify-center md:justify-start gap-2 font-display font-semibold text-[16px] text-[#f0f0f5] w-full md:w-auto h-[52px] md:h-auto border border-white/[0.15] md:border-transparent rounded-[12px] md:rounded-none bg-white/[0.06] md:bg-transparent backdrop-blur-[16px] md:backdrop-blur-none hover:border-[#00b4d8] hover:shadow-[0_0_20px_rgba(0,180,216,0.3)] md:hover:border-transparent md:hover:shadow-none transition-all duration-300"
           >
-            <span ref={ctaTextRef} className="relative z-10">
+            <span className="relative z-10 cta-text transition-transform duration-300 group-hover:translate-x-[6px]">
               See the work
             </span>
-            <span ref={arrowRef} className="opacity-0 -translate-x-1 relative z-10 hidden md:inline-block">
+            <span className="cta-arrow opacity-0 -translate-x-1 relative z-10 hidden md:inline-block transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-[6px]">
               →
             </span>
-            <span ref={ctaUnderlineRef} className="absolute -bottom-1 left-0 w-full h-[1px] bg-[#f0f0f5] origin-left scale-x-0 hidden md:block" />
+            <span className="cta-underline absolute -bottom-1 left-0 w-full h-[1px] bg-[#f0f0f5] origin-left scale-x-0 hidden md:block transition-transform duration-300 group-hover:scale-x-100" />
           </a>
           
           <a

@@ -1,0 +1,11 @@
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onLoad","message":"Hero photo loaded successfully","data":{"src":"/Belal.JPG"},"timestamp":1781135855278}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal."},"timestamp":1781136473569}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal"},"timestamp":1781136474381}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal"},"timestamp":1781136475095}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal-"},"timestamp":1781136475871}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal-"},"timestamp":1781136476155}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal-no"},"timestamp":1781136478498}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal-no-bg.png"},"timestamp":1781136479503}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onError","message":"Hero photo failed to load","data":{"src":"/Belal-no-bg.png"},"timestamp":1781136480436}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onLoad","message":"Hero photo loaded successfully","data":{"src":"/belal-nobg.png"},"timestamp":1781136485071}
+{"sessionId":"04e10a","runId":"post-fix","hypothesisId":"B","location":"HeroSection.tsx:Image.onLoad","message":"Hero photo loaded successfully","data":{"src":"/belal-nobg.png"},"timestamp":1781136487138}

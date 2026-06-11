@@ -46,8 +46,6 @@ export default function Projects() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-
       if (!sectionRef.current || !trackRef.current) return;
       
       const track = trackRef.current;

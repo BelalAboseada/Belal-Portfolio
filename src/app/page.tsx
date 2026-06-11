@@ -1,4 +1,4 @@
-import HeroMask from "@/components/HeroMask";
+import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
@@ -15,7 +15,7 @@ export default function Home() {
     <main className="w-full min-h-screen overflow-clip">
       <Cursor />
       <Navbar />
-      <HeroMask />
+      <HeroSection />
       <About />
       <Projects />
       <Skills />

@@ -12,7 +12,6 @@ export default function ContentCreator() {
   const [hasCounted, setHasCounted] = useState(false);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     if (!sectionRef.current || !headerRef.current || !fillRef.current) return;
 
     gsap.to(fillRef.current, {

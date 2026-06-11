@@ -15,8 +15,6 @@ export default function About() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-
       const chars = splitTextIntoSpans(headerRef.current);
       gsap.from(chars, {
         y: 120, opacity: 0, duration: 0.9, ease: "back.out(1.2)", stagger: 0.04,

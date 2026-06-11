@@ -11,7 +11,6 @@ export default function Skills() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       if (!cardsRef.current) return;
       
       const mm = gsap.matchMedia();
