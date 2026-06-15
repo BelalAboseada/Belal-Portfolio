@@ -1,7 +1,7 @@
 'use client';
 
+import ReactLenis from 'lenis/react';
 import React, { useEffect, useState } from 'react';
-import { ReactLenis } from 'lenis/react';
 
 export const LenisProvider = ({ children }: { children: React.ReactNode }) => {
   const [mounted, setMounted] = useState(false);
