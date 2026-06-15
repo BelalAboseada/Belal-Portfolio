@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import 'lenis/dist/lenis.css';
-import { LenisProvider } from '@/components/LenisProvider';
+import { LenisProvider } from './LenisProvider';
 
 export const metadata: Metadata = {
   title: 'Belal Aboseada - Web Developer & Tech Content Creator',
   description: 'Portfolio of Belal Aboseada, a Web Developer & Tech Content Creator.',
+  icons: {
+    icon: '/images/profile.jpg',
+  },
 };
 
 export default function RootLayout({
