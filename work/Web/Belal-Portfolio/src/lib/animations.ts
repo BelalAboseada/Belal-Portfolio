@@ -3,8 +3,10 @@ import MotionPathPlugin from 'gsap/MotionPathPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import type { RefObject } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(MotionPathPlugin);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(MotionPathPlugin);
+}
 
 const displayNone = (id: string) => {
   gsap.set(id, { display: 'none' });
