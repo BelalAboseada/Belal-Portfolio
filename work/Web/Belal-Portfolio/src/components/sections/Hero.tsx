@@ -81,7 +81,7 @@ export const Hero: React.FC = () => {
               <div className="overlay bg-flax-smoke-50 absolute inset-0 z-[2]"></div>
               <img
                 id="profile-img"
-                src="/images/profile.webp"
+                src="/images/profile.jpg"
                 alt="Belal profile"
                 className="size-full scale-90 rounded-lg object-cover object- brightness-110 grayscale"
               />
