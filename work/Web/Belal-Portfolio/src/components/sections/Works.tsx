@@ -139,7 +139,7 @@ export const Works: React.FC = () => {
       );
 
       if (!isSmallScreen) {
-        gsap.utils.toArray('.work-card').forEach((div: any, i: any) => {
+        (gsap.utils.toArray('.work-card') as Element[]).forEach((div, i) => {
           gsap.timeline({ defaults: { duration: 0.7 } }).to(div, {
             scrollTrigger: {
               trigger: div,

@@ -37,7 +37,7 @@ export const SamsungError: React.FC = () => {
             </svg>
           </div>
           <h2 className="mt-2 font-semibold text-gray-800">
-            It seems you're using the <b>Samsung Internet Browser</b>.
+            It seems you&apos;re using the <b>Samsung Internet Browser</b>.
           </h2>
           <p className="mt-2 w-full text-start text-sm leading-relaxed text-gray-600">
             Some features might not work as expected. To fix it, please follow

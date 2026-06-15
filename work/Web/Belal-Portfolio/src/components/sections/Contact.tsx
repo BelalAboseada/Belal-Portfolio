@@ -2,7 +2,6 @@
 
 import React, { useEffect, useMemo } from 'react';
 import { Button } from '../common';
-import { Link } from '../common';
 import Lottie from 'lottie-react';
 import earthLottie from '../../../public/videos/earth.json';
 import { textSplitterIntoChar } from '@/lib/utils';
@@ -75,7 +74,7 @@ export const Contact: React.FC = () => {
                 Working Globally
               </p>
               <p className="flex size-full items-center justify-start pr-2 pl-1">
-                Available Sep '24
+                Available Sep &apos;24
               </p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import gsap from 'gsap';
 import React, { useEffect } from 'react';
 
-interface MyEnNameProps extends React.HTMLAttributes<HTMLDivElement> {}
+type MyEnNameProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const MyEnName: React.FC<MyEnNameProps> = (props) => {
   const letters = "BELAL Aboseada".split("");

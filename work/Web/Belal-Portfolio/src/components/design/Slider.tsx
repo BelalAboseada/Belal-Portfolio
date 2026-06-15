@@ -123,7 +123,7 @@ export const Slider: React.FC = () => {
   const clickNext = () => {
     if (!canClick) return;
     setCanClick(false);
-    let newIndex = (index + 1) % people.length;
+    const newIndex = (index + 1) % people.length;
     if (newIndex < people.length) changeQuote(newIndex);
   };
 
@@ -227,7 +227,7 @@ export const Slider: React.FC = () => {
                   />
 
                   <p className="heading-4 mt-4 max-w-[25ch] leading-none font-semibold">
-                    " {p.quote} "
+                    &ldquo;{p.quote}&rdquo;
                   </p>
 
                   <div className="heading-6 mt-4 font-semibold">

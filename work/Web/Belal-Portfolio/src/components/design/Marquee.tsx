@@ -18,7 +18,7 @@ const createMarquee = (
   const cloneCount = 2;
   for (let i = 0; i < cloneCount; i++) {
     Array.from(items).forEach((item) => {
-      let clone = item.cloneNode(true) as HTMLElement;
+      const clone = item.cloneNode(true) as HTMLElement;
       container.appendChild(clone);
     });
   }

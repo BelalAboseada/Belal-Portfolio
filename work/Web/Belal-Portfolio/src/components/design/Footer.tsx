@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { navbarLinks, resourceLinks, socialLinks } from '@/lib/data';
+import { navbarLinks, socialLinks } from '@/lib/data';
 import { Link } from '../common';
 import { MagneticEffect } from '../common/MagneticEffect';
 import moment from 'moment-timezone';
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="col-span-5 place-content-center max-sm:place-content-end md:col-span-3">
-          <p className="heading-6 font-bold uppercase">Belal's Local time</p>
+          <p className="heading-6 font-bold uppercase">Belal&apos;s Local time</p>
           <p className="heading-6">{myLocalTime}</p>
           <p className="heading-6 font-bold uppercase">Your Local time</p>
           <p className="heading-6">{userLocalTime}</p>

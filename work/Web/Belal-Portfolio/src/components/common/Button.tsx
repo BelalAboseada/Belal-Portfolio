@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({ label, url, className, ...props 
       gotoSection(url, lenis);
     }
     if (props.onClick) {
-      props.onClick(e as any);
+      props.onClick(e as React.MouseEvent<HTMLButtonElement>);
     }
   };
 

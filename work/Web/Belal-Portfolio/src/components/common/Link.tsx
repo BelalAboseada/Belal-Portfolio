@@ -4,8 +4,10 @@ import React from 'react';
 import { gotoSection, cn } from '@/lib/utils';
 import { useLenis } from 'lenis/react';
 
+type LinkTag = 'p' | 'li';
+
 interface LinkProps extends React.HTMLAttributes<HTMLElement> {
-  tag?: keyof React.JSX.IntrinsicElements;
+  tag?: LinkTag;
   label: string;
   url: string;
   icon?: boolean;
@@ -13,7 +15,7 @@ interface LinkProps extends React.HTMLAttributes<HTMLElement> {
 
 export const Link: React.FC<LinkProps> = ({ tag = 'p', label, url, icon = false, className, ...props }) => {
   const lenis = useLenis();
-  const Component = tag;
+  const Component: LinkTag = tag;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

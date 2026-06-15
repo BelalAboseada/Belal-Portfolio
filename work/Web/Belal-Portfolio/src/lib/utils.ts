@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import type Lenis from "lenis";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -57,7 +58,7 @@ export const getAvailableForWorkDate = () => {
     'NOV',
     'DEC',
   ];
-  let index = date.getMonth();
+  const index = date.getMonth();
 
   // Uncomment this if you want to include the next month
   // if (date.getMonth() < 12) {
@@ -68,7 +69,7 @@ export const getAvailableForWorkDate = () => {
   return `${month} '${year}`;
 };
 
-export const gotoSection = (url: string, lenis?: any) => {
+export const gotoSection = (url: string, lenis?: Lenis | null) => {
   if (lenis) {
     if (url === '#testimonials-section') {
       lenis.scrollTo('#slider', { duration: 3 });

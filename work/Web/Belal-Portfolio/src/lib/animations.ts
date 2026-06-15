@@ -129,26 +129,30 @@ const activateMagneto = (
   magnetoStrengthVal: number,
   magnetoTextStrengthVal: number,
 ) => {
-  const xDivTo = gsap.quickTo(magneto.current, 'x', {
+  const el = magneto.current;
+  const textEl = magnetoText.current;
+  if (!el || !textEl) return;
+
+  const xDivTo = gsap.quickTo(el, 'x', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
-  const xTextTo = gsap.quickTo(magnetoText.current, 'x', {
+  const xTextTo = gsap.quickTo(textEl, 'x', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
 
-  const yTextTo = gsap.quickTo(magnetoText.current, 'y', {
+  const yTextTo = gsap.quickTo(textEl, 'y', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
-  const yDivTo = gsap.quickTo(magneto.current, 'y', {
+  const yDivTo = gsap.quickTo(el, 'y', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
 
   const { clientX, clientY } = event;
-  const { width, height, left, top } = magneto.current.getBoundingClientRect();
+  const { width, height, left, top } = el.getBoundingClientRect();
 
   const magnetoStrength = magnetoStrengthVal;
   const magnetoTextStrength = magnetoTextStrengthVal;
@@ -170,20 +174,24 @@ const resetMagneto = (
   magneto: RefObject<HTMLElement | null>,
   magnetoText: RefObject<HTMLElement | null>,
 ) => {
-  const xDivTo = gsap.quickTo(magneto.current, 'x', {
+  const el = magneto.current;
+  const textEl = magnetoText.current;
+  if (!el || !textEl) return;
+
+  const xDivTo = gsap.quickTo(el, 'x', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
-  const xTextTo = gsap.quickTo(magnetoText.current, 'x', {
+  const xTextTo = gsap.quickTo(textEl, 'x', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
 
-  const yTextTo = gsap.quickTo(magnetoText.current, 'y', {
+  const yTextTo = gsap.quickTo(textEl, 'y', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });
-  const yDivTo = gsap.quickTo(magneto.current, 'y', {
+  const yDivTo = gsap.quickTo(el, 'y', {
     duration: 1,
     ease: 'elastic.out(1, 0.3)',
   });

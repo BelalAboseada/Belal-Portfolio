@@ -81,8 +81,8 @@ export const Services: React.FC = () => {
             ( SERVICES )
           </p>
           <p className="heading-4 font-fancy col-span-8 w-full text-balance sm:font-semibold md:col-span-5">
-            User-Friendly interface don't happen by chance, they are built with
-            intention. I code intuitive responsive solutions that make your users'
+            User-Friendly interface don&apos;t happen by chance, they are built with
+            intention. I code intuitive responsive solutions that make your users&apos;
             journey effortless
           </p>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CirclesProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CirclesProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Circles: React.FC<CirclesProps> = (props) => {
   return (
