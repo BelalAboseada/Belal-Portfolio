@@ -1,10 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
-  experimental: {
-    turbo: {},
-  },
+  turbopack: {},
 };
 
 export default nextConfig;
