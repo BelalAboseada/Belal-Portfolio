@@ -107,7 +107,7 @@ export const Marquee: React.FC = () => {
         {[1, 2].map((_) => (
           <h4
             key={`marquee-item-1-${_}`}
-            className="sm:heading-1 flex w-full items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
+            className="sm:heading-1 flex w-max items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
           >
             Web Developer & Tech Content Creator
             <div className="w-fit scale-50 sm:scale-75">
@@ -125,7 +125,7 @@ export const Marquee: React.FC = () => {
         {[1, 2].map((_) => (
           <h4
             key={`marquee-item-2-${_}`}
-            className="sm:heading-1 flex w-full items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
+            className="sm:heading-1 flex w-max items-center text-3xl font-bold text-nowrap whitespace-nowrap max-sm:mx-6"
           >
             Web Developer & Tech Content Creator
             <div className="mx-2 inline-block scale-50 sm:scale-75">

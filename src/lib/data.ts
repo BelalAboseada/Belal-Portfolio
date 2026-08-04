@@ -75,7 +75,7 @@ const resourceLinks = [
 ];
 
 const heroText =
-  'Web developer specializing in React & Node.js, building SaaS products, and creating Arabic tech content that simplifies complex topics for everyday people.';
+  'Web developer specializing in building web Apps,SaaS products, and creating Arabic tech content that simplifies complex topics for everyday people.';
 
 const locationPlace = ``;
 const locationCountry = 'Damanhur, Egypt';

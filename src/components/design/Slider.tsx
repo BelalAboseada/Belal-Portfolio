@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useWindowSize } from '@/lib/hooks';
 import { textSplitterIntoChar } from '@/lib/utils';
@@ -195,15 +196,19 @@ export const Slider: React.FC = () => {
             </div>
           </div>
           <div className="columns-gap relative order-first col-span-full flex h-[60vh] w-full items-start justify-center overflow-clip max-sm:order-last lg:order-last lg:col-span-6 lg:h-full">
-            <img
+            <Image
               className={`relative z-10 size-full rounded-lg object-cover object-center mix-blend-screen brightness-90 grayscale lg:h-[85svh] ${index !== 0 ? 'hidden' : ''}`}
               src={people[0].profile}
               alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <img
+            <Image
               className={`relative z-10 size-full rounded-lg object-cover object-center mix-blend-screen brightness-90 grayscale lg:h-[85svh] ${index !== 1 ? 'hidden' : ''}`}
               src={people[1].profile}
               alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
             <div
               id="quote-overlay"
@@ -220,10 +225,12 @@ export const Slider: React.FC = () => {
               </div>
               <div className="col-span-3">
                 <div className="columns-gap flex w-full flex-col gap-y-4">
-                  <img
+                  <Image
                     className="aspect-square size-full rounded-md object-cover object-center mix-blend-screen brightness-90 grayscale"
                     src={p.profile}
                     alt=""
+                    width={400}
+                    height={400}
                   />
 
                   <p className="heading-4 mt-4 max-w-[25ch] leading-none font-semibold">

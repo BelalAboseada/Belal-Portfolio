@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useWindowSize } from '@/lib/hooks';
 import { textSplitterIntoChar } from '@/lib/utils';
@@ -66,7 +67,7 @@ export const Works: React.FC = () => {
     },
   ], []);
 
-  const createForwardTimeline = (i: number) => {
+  const createForwardTimeline = useCallback((i: number) => {
     const tl = gsap.timeline({ defaults: { duration: 0.3 } });
     tl.set('#index', {
       yPercent: 100,
@@ -78,7 +79,7 @@ export const Works: React.FC = () => {
       ease: 'power1.inOut',
     });
     return tl;
-  };
+  }, [selectedWorksProps.length]);
 
   const createBackwardTimeline = (i: number) => {
     const tl = gsap.timeline({ defaults: { duration: 0.3 } });
@@ -184,7 +185,7 @@ export const Works: React.FC = () => {
     }, 100);
 
     return () => observer.disconnect();
-  }, [isSmallScreen, selectedWorksProps.length]);
+  }, [isSmallScreen, selectedWorksProps.length, createForwardTimeline]);
 
   const showCursor = () => cursorTl.current?.play();
   const hideCursor = () => cursorTl.current?.reverse();
@@ -236,9 +237,11 @@ export const Works: React.FC = () => {
             <div key={i} className="work-card @container">
               <a className="group" target="_blank" rel="noreferrer" href={work.url}>
                 <div className="flex-center relative aspect-square overflow-clip rounded-lg">
-                  <img
+                  <Image
                     alt="work-background"
                     loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 58vw"
                     className="absolute size-full object-cover select-none"
                     src={work.imageBg}
                   />

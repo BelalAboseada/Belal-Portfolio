@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import 'lenis/dist/lenis.css';
 import { LenisProvider } from './LenisProvider';
@@ -11,17 +11,18 @@ export const metadata: Metadata = {
     icon: '/images/profile.jpg',
   },
   manifest: '/manifest.webmanifest',
-  themeColor: '#1c1d16',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
     title: 'Belal.dev',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover',
-  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#1c1d16',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({

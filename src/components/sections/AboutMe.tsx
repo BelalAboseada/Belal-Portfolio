@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import {
   animateSplitText,
   xToZero,
@@ -72,8 +73,10 @@ export const AboutMe: React.FC = () => {
 
       <div className="padding-y md:column-gap mt-6 grid grid-cols-12">
         <div className="pointer-events-none col-span-full content-end rounded-lg select-none md:col-span-4">
-          <img
+          <Image
             src="/images/profile2.webp"
+            width={400}
+            height={600}
             className="aspect-[1/1.5] rounded-lg object-cover object-top mix-blend-screen brightness-90 grayscale"
             alt="Headshot of Ebraheem facing a camera"
           />

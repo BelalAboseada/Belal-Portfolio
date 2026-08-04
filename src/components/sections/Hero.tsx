@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import Image from 'next/image';
 import { MyName, Star } from '../design';
 import { Button } from '../common';
 import { getAvailableForWorkDate, textSplitterIntoChar } from '@/lib/utils';
@@ -79,11 +80,14 @@ export const Hero: React.FC = () => {
               className="relative col-span-4 mt-10 h-[20vh] max-w-lg flex-col rounded-lg select-none sm:mt-0 sm:h-full md:flex md:h-[50vh]"
             >
               <div className="overlay bg-flax-smoke-50 absolute inset-0 z-[2]"></div>
-              <img
+              <Image
                 id="profile-img"
                 src="/images/profile.jpg"
                 alt="Belal profile"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="size-full scale-90 rounded-lg object-cover object- brightness-110 grayscale"
+                priority
               />
             </div>
 
