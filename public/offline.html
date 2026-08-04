@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline | Belal Aboseada</title>
+  <meta name="theme-color" content="#1c1d16">
+  <style>
+    :root {
+      --color-flax-smoke-50: #f4f4f1;
+      --color-flax-smoke-800: #404133;
+      --color-flax-smoke-950: #1c1d16;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--color-flax-smoke-50);
+      color: var(--color-flax-smoke-800);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 500px;
+    }
+    h1 {
+      color: var(--color-flax-smoke-950);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--color-flax-smoke-950);
+      color: var(--color-flax-smoke-50);
+      text-decoration: none;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+      color: var(--color-flax-smoke-800);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18" />
+    </svg>
+    <h1>You're offline</h1>
+    <p>Please check your internet connection to see the latest projects and updates.</p>
+    <button class="btn" onclick="window.location.reload()">Try Again</button>
+  </div>
+</body>
+</html>
