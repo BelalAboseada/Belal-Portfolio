@@ -65,6 +65,15 @@ export const Works: React.FC = () => {
       url: '#',
       year: '2024',
     },
+    {
+      name: 'Upcoming SaaS',
+      category: 'Software project',
+      tags: ['Software project', 'SaaS', 'In Progress'],
+      videoSrc: '',
+      imageBg: '',
+      url: '#',
+      year: '2025',
+    },
   ], []);
 
   const createForwardTimeline = useCallback((i: number) => {
@@ -236,26 +245,37 @@ export const Works: React.FC = () => {
           {selectedWorksProps.map((work, i) => (
             <div key={i} className="work-card @container">
               <a className="group" target="_blank" rel="noreferrer" href={work.url}>
-                <div className="flex-center relative aspect-square overflow-clip rounded-lg">
-                  <Image
-                    alt="work-background"
-                    loading="lazy"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 58vw"
-                    className="absolute size-full object-cover select-none"
-                    src={work.imageBg}
-                  />
-                  <div className="flex-center z-10 aspect-4/3 size-full overflow-clip rounded-lg object-cover">
-                    <video
-                      ref={(el) => {
-                        videoRefs.current[i] = el;
-                      }}
-                      src={work.videoSrc}
-                      muted
-                      autoPlay={false}
-                      className="size-[80%] rounded-md object-contain blur transition-all duration-500 ease-in-out"
-                    ></video>
-                  </div>
+                <div className="flex-center relative aspect-square overflow-clip rounded-lg bg-[#0B0B0A] border border-flax-smoke-900 group-hover:border-flax-smoke-700 transition-colors">
+                  {work.imageBg ? (
+                    <>
+                      <Image
+                        alt="work-background"
+                        loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 58vw"
+                        className="absolute size-full object-cover select-none"
+                        src={work.imageBg}
+                      />
+                      <div className="flex-center z-10 aspect-4/3 size-full overflow-clip rounded-lg object-cover">
+                        <video
+                          ref={(el) => {
+                            videoRefs.current[i] = el;
+                          }}
+                          src={work.videoSrc}
+                          muted
+                          autoPlay={false}
+                          className="size-[80%] rounded-md object-contain blur transition-all duration-500 ease-in-out"
+                        ></video>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="relative size-full flex items-center justify-center">
+                      <div className="absolute inset-0 bg-linear-to-br from-flax-smoke-900/20 to-transparent opacity-50"></div>
+                      <span className="relative z-10 text-[140px] font-fancy font-bold text-flax-smoke-900/60 group-hover:text-flax-smoke-700 transition-colors drop-shadow-xl">
+                        ?
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <p className="heading-6 font-title! mt-[2%] mb-[1%] leading-none">

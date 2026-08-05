@@ -4,3 +4,4 @@ export * from './Hero';
 export * from './People';
 export * from './Services';
 export * from './Works';
+export * from './Featured';

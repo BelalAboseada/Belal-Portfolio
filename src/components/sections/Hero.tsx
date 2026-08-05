@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
   const whoAmI = useMemo(() => {
     return {
       __html: textSplitterIntoChar(
-        'A freelance full-stack developer, cutting-edge technologies to deliver comprehensive solutions for your business.'
+        'I build reliable web & software products by day, and break down tech, AI, and gadgets for thousands of viewers by night.'
       ),
     };
   }, []);
@@ -58,15 +58,17 @@ export const Hero: React.FC = () => {
                 </svg>
               </div>
 
-              <p className="sr-only">
-                A freelance full-stack developer, cutting-edge technologies to
-                deliver comprehensive solutions for your business.
-              </p>
-              <p
-                id="whoAmI"
-                className="who-am-i heading-5 w-full max-w-[30ch] overflow-clip leading-snug font-medium text-balance sm:max-w-[37ch] lg:text-start"
-                dangerouslySetInnerHTML={whoAmI}
-              ></p>
+              <div className="flex flex-col gap-4">
+                <p className="heading-6 text-flax-smoke-400 font-medium font-fancy">Software Engineer &times; Tech Content Creator</p>
+                <p className="sr-only">
+                  I build reliable web & software products by day, and break down tech, AI, and gadgets for thousands of viewers by night.
+                </p>
+                <p
+                  id="whoAmI"
+                  className="who-am-i heading-5 w-full max-w-[30ch] overflow-clip leading-snug font-medium text-balance sm:max-w-[37ch] lg:text-start"
+                  dangerouslySetInnerHTML={whoAmI}
+                ></p>
+              </div>
 
               <div className="relative origin-left overflow-hidden sm:scale-150">
                 <div id="contact-btn" className="flex -translate-y-full">

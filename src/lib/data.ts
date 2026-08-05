@@ -26,6 +26,10 @@ const navLinks = [
     label: 'Contact',
     url: '#contact-section',
   },
+  {
+    label: 'Links',
+    url: '/links',
+  },
 ];
 const navbarLinks = [
   {
@@ -38,29 +42,20 @@ const navbarLinks = [
 const socialLinks = [
   {
     label: 'Instagram',
-    url: 'https://instagram.com/belal_aboseada',   
+    url: 'https://www.instagram.com/belal_aboseada',
   },
   {
-    label: 'whatsapp',
-    url: 'https://instagram.com/belal_aboseada',  
-
+    label: 'TikTok',
+    url: 'https://www.tiktok.com/@Belalaboseada',
+  },
+  {
+    label: 'YouTube',
+    url: 'https://www.youtube.com/@belalaboseada',
   },
   {
     label: 'Facebook',
-    url: 'https://instagram.com/belal_aboseada',  
- 
+    url: 'https://www.facebook.com/belal.hesham.1848?mibextid=2JQ9oc',
   },
-  {
-    label: 'linkedin',
-    url: 'https://instagram.com/belal_aboseada',  
- 
-  },
-  {
-    label: 'youtube',
-    url: 'https://instagram.com/belal_aboseada',  
- 
-  },
-
 ];
 
 const resourceLinks = [

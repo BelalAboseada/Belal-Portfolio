@@ -3,11 +3,12 @@
 import React, { useEffect, useRef } from 'react';
 import { LoadingScreen, SamsungError, Cursor, Footer, Marquee } from '@/components/design';
 import { Nav } from '@/components/common/Nav';
-import { Hero, Services, Works, AboutMe, People, Contact } from '@/components/sections';
+import { Hero, Services, Works, Featured, AboutMe, People, Contact } from '@/components/sections';
 import { InstallPrompt } from '@/components/common/InstallPrompt';
 import { useWindowSize } from '@/lib/hooks';
 
 export default function Home() {
+  const SHOW_CLIENT_PROJECTS = false;
   const { width, height } = useWindowSize();
   const noiseRef = useRef<SVGRectElement>(null);
   const noise2Ref = useRef<SVGRectElement>(null);
@@ -81,7 +82,8 @@ export default function Home() {
         <div className="text-flax-smoke-200 relative rounded-t-3xl bg-[#0B0B0A] py-[5%]">
           <Services />
           <Marquee />
-          <Works />
+          {SHOW_CLIENT_PROJECTS && <Works />}
+          <Featured />
         </div>
 
         <AboutMe />

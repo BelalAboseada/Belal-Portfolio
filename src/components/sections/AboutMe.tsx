@@ -13,7 +13,7 @@ export const AboutMe: React.FC = () => {
   const aboutMe = useMemo(() => {
     return {
       __html: textSplitterIntoChar(
-        'Web Developer, Tech Content Creator/',
+        'Software Engineer, Tech Content Creator /',
         true,
         true
       ),
@@ -83,7 +83,7 @@ export const AboutMe: React.FC = () => {
         </div>
         <div className="col-span-11 mt-10 md:col-span-8 md:col-start-6">
           <p className="heading-4 relative w-full max-w-[40ch] leading-snug font-medium text-balance">
-            Web developer specializing in React & Node.js, building SaaS products, and creating Arabic tech content that simplifies complex topics for everyday people.
+            Building software by day, simplifying technology by night — with the same obsession for craft in both.
           </p>
 
           <div className="text-flax-smoke-300 mt-[5%] flex justify-start gap-10 sm:gap-20">
@@ -91,7 +91,7 @@ export const AboutMe: React.FC = () => {
               ( ABOUT ME )
             </p>
             <p className="heading-6 font-fancy w-full text-balance sm:max-w-[40ch]">
-              I am a Mid-level Web Developer and Junior Mobile Developer. I focus on creating high-quality web experiences and making complex technology easy to understand through my content.
+              I&apos;m Belal Aboseada, a software engineer working across web and early mobile development, and a tech content creator producing Arabic-language videos on gadgets, AI, and everyday technology. Every video gets the same care I put into a codebase — from the script to the 3-light setup to the final edit.
             </p>
           </div>
         </div>

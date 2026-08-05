@@ -18,8 +18,10 @@ export const Link: React.FC<LinkProps> = ({ tag = 'p', label, url, icon = false,
   const Component: LinkTag = tag;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    gotoSection(url, lenis);
+    if (url.startsWith('#')) {
+      e.preventDefault();
+      gotoSection(url, lenis);
+    }
   };
 
   const SvgIcon = () => (

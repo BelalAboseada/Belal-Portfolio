@@ -90,8 +90,10 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
                   <a
                     href={l.url}
                     onClick={(e) => {
-                      e.preventDefault();
-                      gotoSectionLocal(l.url);
+                      if (l.url.startsWith('#')) {
+                        e.preventDefault();
+                        gotoSectionLocal(l.url);
+                      }
                     }}
                     className="group my-2 flex h-full w-fit translate-y-full cursor-pointer items-center justify-start leading-none will-change-auto"
                   >
