@@ -1,6 +1,6 @@
-const nextConfig = {
-  /* config options here */
-  turbopack: {},
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   async headers() {
     return [
       {
