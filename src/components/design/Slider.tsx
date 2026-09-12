@@ -188,20 +188,16 @@ export const Slider: React.FC = () => {
             </div>
           </div>
           <div className="columns-gap relative order-first col-span-full flex h-[60vh] w-full items-start justify-center overflow-clip max-sm:order-last lg:order-last lg:col-span-6 lg:h-full">
-            <Image
-              className={`relative z-10 size-full rounded-lg object-cover object-center mix-blend-screen brightness-90 grayscale lg:h-[85svh] ${index !== 0 ? 'hidden' : ''}`}
-              src={people[0].profile}
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <Image
-              className={`relative z-10 size-full rounded-lg object-cover object-center mix-blend-screen brightness-90 grayscale lg:h-[85svh] ${index !== 1 ? 'hidden' : ''}`}
-              src={people[1].profile}
-              alt=""
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            {people.map((p, i) => (
+              <Image
+                key={i}
+                className={`relative z-10 size-full rounded-lg object-cover object-center mix-blend-screen brightness-90 grayscale lg:h-[85svh] ${index !== i ? 'hidden' : ''}`}
+                src={p.profile}
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            ))}
             <div
               id="quote-overlay"
               className="bg-flax-smoke-500 absolute inset-0 z-[50] rounded-lg"
