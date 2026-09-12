@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { BrandMark } from '@/components/design/BrandMark';
 
 export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
@@ -38,10 +39,13 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[#0B0B0A] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         {/* Logo / heading */}
-        <div className="text-center mb-10">
-          <h1 className="font-fancy text-flax-smoke-100 text-2xl font-bold uppercase tracking-wide">
-            belal
-            <span className="inline-block font-fancy origin-center">©</span>
+        <div className="flex flex-col items-center text-center mb-10">
+          <BrandMark
+            title="Belal Aboseada"
+            className="text-flax-smoke-100 mb-4 h-14 w-auto"
+          />
+          <h1 className="font-fancy text-flax-smoke-100 text-2xl font-bold uppercase tracking-[0.17em]">
+            Belal Aboseada
           </h1>
           <p className="font-fancy text-flax-smoke-500 text-sm mt-2 uppercase tracking-widest">
             Admin Access

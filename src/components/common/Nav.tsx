@@ -3,9 +3,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BurgerMenuBtn } from './BurgerMenuBtn';
 import { Link } from './Link';
+import NextLink from 'next/link';
 import { MagneticEffect } from './MagneticEffect';
 import { Button } from './Button';
 import { Circles } from '../design/Circles';
+import { BrandMark } from '../design/BrandMark';
+import { Logo } from '../design/Logo';
 
 import {
   animateNavbarEnter,
@@ -51,9 +54,11 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <>
+      {/* Below md the burger is the only navigation, so it stays visible from
+          the top; on desktop it scales in once the hero has scrolled past. */}
       <BurgerMenuBtn
         onClick={toggleBtnClickAnimation}
-        className="z-[9999] scale-0 drop-shadow-lg"
+        className="z-[9999] scale-100 drop-shadow-lg md:scale-0"
         id="burger"
       />
 
@@ -109,6 +114,11 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
 
           <div className="w-full">
             <div className="text-flax-smoke-50 mt-2 h-full font-normal">
+              <Logo
+                variant="horizontal"
+                tagline
+                className="text-flax-smoke-100 text-sm md:text-base"
+              />
               {/* Email removed as no email provided */}
               <div className="mt-6 flex flex-wrap justify-start gap-1">
                 {socialLinks.map((social) => (
@@ -138,17 +148,17 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
             divId="name-container"
             textId="name"
           >
-            <div id="name-container" className="group -m-10 h-fit cursor-pointer p-10">
-              <h2
-                id="name"
-                className="font-fancy flex items-start text-xl font-extrabold uppercase md:text-3xl"
-              >
-                belal
-                <span className="font-fancy inline! origin-center! text-xl transition-transform duration-500 ease-in-out group-hover:rotate-[360deg]">
-                  &copy;
-                </span>
+            <NextLink
+              href="/"
+              id="name-container"
+              aria-label="Belal Aboseada — home"
+              className="group -m-10 block h-fit cursor-pointer p-10"
+            >
+              <h2 id="name" className="flex items-center text-xl md:text-3xl">
+                <BrandMark className="h-[1.4em] w-auto transition-transform duration-500 ease-in-out group-hover:-rotate-6" />
+                <span className="sr-only">Belal Aboseada</span>
               </h2>
-            </div>
+            </NextLink>
           </MagneticEffect>
 
           <div className="flex justify-start">
@@ -159,8 +169,9 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
               creator by night
             </p>
           </div>
-          <div className="flex">
-            <ul className="w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:flex md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl">
+          {/* Desktop only — below md the burger menu is the navigation. */}
+          <div className="hidden md:flex">
+            <ul className="flex w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl">
               {navLinks.map((l, index) => (
                 <Link
                   key={l.label}

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { LoadingScreen } from '@/components/design';
+import { BrandMark, Logo, LoadingScreen } from '@/components/design';
 
 interface Link {
   id: string;
@@ -44,18 +44,27 @@ export default function LinksDisplay({ social, products }: Props) {
       <main className="relative min-h-screen bg-flax-smoke-50 text-flax-smoke-950">
         {/* TOP NAV-STYLE BAR */}
         <header className="padding-x pt-6 w-full flex justify-between items-center relative z-20">
-          <Link href="/" className="group h-fit cursor-pointer">
-            <h2 className="font-fancy flex items-start text-xl font-extrabold uppercase md:text-3xl">
-              belal
-              <span className="font-fancy inline! origin-center! text-xl transition-transform duration-500 ease-in-out group-hover:rotate-[360deg]">
-                &copy;
-              </span>
-            </h2>
+          <Link
+            href="/"
+            aria-label="Belal Aboseada — home"
+            className="group h-fit cursor-pointer"
+          >
+            <Logo
+              variant="horizontal"
+              className="text-flax-smoke-950 text-base md:text-xl"
+              markClassName="transition-transform duration-500 ease-in-out group-hover:-rotate-6"
+            />
           </Link>
         </header>
 
         {/* HEADER SECTION (Light Block) */}
         <section className="common-padding pt-20 pb-16 md:pt-32 md:pb-24 flex flex-col items-center text-center">
+          <div className="flex-center bg-flax-smoke-950 mb-8 size-24 rounded-3xl md:size-28">
+            <BrandMark
+              title="Belal Aboseada"
+              className="text-flax-smoke-50 h-1/2 w-auto"
+            />
+          </div>
           <h1 className="heading-1-alt font-bold uppercase leading-none mb-6">Find Me /</h1>
           <p className="heading-5 w-full max-w-[35ch] leading-snug font-medium text-balance">
             Software Engineer &times; Tech Content Creator — reviews, AI, and everything tech.

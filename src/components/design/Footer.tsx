@@ -6,6 +6,7 @@ import { Link } from '../common';
 import { MagneticEffect } from '../common/MagneticEffect';
 import moment from 'moment-timezone';
 import { useLenis } from 'lenis/react';
+import { BrandMark } from './BrandMark';
 
 export const Footer: React.FC = () => {
   const [myLocalTime, setMyLocalTime] = useState('');
@@ -57,7 +58,8 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="grid w-full grid-cols-12">
-        <div className="col-span-7 place-content-center md:col-span-6">
+        <div className="col-span-7 flex items-center gap-5 place-content-center md:col-span-6">
+          <BrandMark className="text-flax-smoke-800 hidden h-16 w-auto shrink-0 sm:block" />
           <h6 className="heading-4 sm:heading-2 leading-none font-bold">
             © {new Date().getFullYear()} Huy <br />
             All rights reserved.

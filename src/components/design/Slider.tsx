@@ -14,16 +14,8 @@ const people = [
     author: 'Belal Aboseada',
     position: 'Full Stack Developer',
     tags: ['Software Development', 'UI/UX', 'Web Development'],
-    profile: '/images/Belal.jpg',
-  },
-  {
-    quote:
-      'Working with Ebraheem on the Axon website has been an exceptional experience. His invaluable support and dedication were crucial in bringing this project to life. Thank you, Ebraheem!',
-    author: '',
-    position: '',
-    tags: ['Web Development', 'SEO'],
-    profile: '/images/',
-  },
+    profile: '/images/Belal new .jpg',
+  }
 ];
 
 export const Slider: React.FC = () => {

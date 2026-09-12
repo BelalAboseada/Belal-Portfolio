@@ -46,10 +46,11 @@ export const config = {
   matcher: [
     /*
      * Match all routes except:
-     * - _next/static (static files)
-     * - _next/image (Next.js image optimization)
+     * - _next/static  (static files)
+     * - _next/image   (Next.js image optimisation)
+     * - _next/data    (Next.js client-side prefetches)
      * - favicon.ico and common static asset extensions
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|json|txt|woff2?)$).*)',
+    '/((?!_next/static|_next/image|_next/data|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|json|txt|woff2?)$).*)',
   ],
 };

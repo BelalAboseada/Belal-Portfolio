@@ -15,7 +15,7 @@ if (workbox) {
 
   // 2. Precache static assets (Next.js handles versions so we can safely cache these)
   precaching.precacheAndRoute([
-    { url: '/offline.html', revision: '1' },
+    { url: '/offline.html', revision: '2' },
     // Google fonts in public folder
     { url: '/fonts/CabinetGrotesk-Variable.ttf', revision: '1' },
     { url: '/fonts/Switzer-Variable.ttf', revision: '1' },

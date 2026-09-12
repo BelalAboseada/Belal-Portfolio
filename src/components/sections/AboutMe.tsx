@@ -74,7 +74,7 @@ export const AboutMe: React.FC = () => {
       <div className="padding-y md:column-gap mt-6 grid grid-cols-12">
         <div className="pointer-events-none col-span-full content-end rounded-lg select-none md:col-span-4">
           <Image
-            src="/images/profile2.webp"
+            src="/images/Belal new .jpg"
             width={400}
             height={600}
             className="aspect-[1/1.5] rounded-lg object-cover object-top mix-blend-screen brightness-90 grayscale"

@@ -7,6 +7,7 @@ import {
   animateLoadingText,
   animateLoadingTextContainer,
 } from '@/lib/animations';
+import { BrandMark } from './BrandMark';
 
 export const LoadingScreen: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -37,7 +38,7 @@ export const LoadingScreen: React.FC = () => {
       typeof navigator !== 'undefined' && /samsung/i.test(navigator.userAgent);
 
     animateLoadingTextContainer();
-    animateLoadingText('span.loading-text');
+    animateLoadingText('.loading-text');
 
     if (pathRef) {
       animateLoadingPath(pathRef, targetPath, isSamsungBrowser);
@@ -64,6 +65,10 @@ export const LoadingScreen: React.FC = () => {
           style={{ transform: 'translateZ(0px)' }}
           className="text-flax-smoke-50/75 z-1 flex size-full flex-col items-center justify-center text-center text-4xl font-bold opacity-0 md:text-6xl"
         >
+          <div className="mb-6 overflow-clip">
+            <BrandMark className="loading-text h-16 w-auto translate-y-full will-change-auto md:h-24" />
+          </div>
+
           <h3 className="overflow-clip">
             <span className="loading-text inline-block translate-y-full will-change-auto">
               Belal
@@ -78,7 +83,7 @@ export const LoadingScreen: React.FC = () => {
 
           <p className="heading-6 overflow-clip font-normal">
             <span className="loading-text absolute bottom-10 left-5 inline-block font-mono sm:left-14">
-              Version 1.4v
+              Version 1.5v
             </span>
 
             <span className="loading-text absolute right-5 bottom-10 inline-block animate-pulse font-mono sm:right-14">
