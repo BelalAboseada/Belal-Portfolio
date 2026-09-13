@@ -54,11 +54,11 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <>
-      {/* Below md the burger is the only navigation, so it stays visible from
+      {/* Below lg the burger is the only navigation, so it stays visible from
           the top; on desktop it scales in once the hero has scrolled past. */}
       <BurgerMenuBtn
         onClick={toggleBtnClickAnimation}
-        className="z-[9999] scale-100 drop-shadow-lg md:scale-0"
+        className="z-[9999] scale-100 drop-shadow-lg lg:scale-0"
         id="burger"
       />
 
@@ -152,25 +152,25 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
               href="/"
               id="name-container"
               aria-label="Belal Aboseada — home"
-              className="group -m-10 block h-fit cursor-pointer p-10"
+              className="group -m-10 block h-fit shrink-0 cursor-pointer p-10"
             >
-              <h2 id="name" className="flex items-center text-xl md:text-3xl">
+              <h2 id="name" className="flex items-center text-2xl lg:text-3xl">
                 <BrandMark className="h-[1.4em] w-auto transition-transform duration-500 ease-in-out group-hover:-rotate-6" />
                 <span className="sr-only">Belal Aboseada</span>
               </h2>
             </NextLink>
           </MagneticEffect>
 
-          <div className="flex justify-start">
-            <p className="heading-6 font-fancy text-flax-smoke-400 hidden font-bold uppercase select-none md:block">
+          <div className="hidden shrink-0 justify-start lg:flex">
+            <p className="heading-6 font-fancy text-flax-smoke-400 font-bold uppercase select-none">
               {/* available for freelancers <br />
               work and collaboration */}
               developer by day  <br />
               creator by night
             </p>
           </div>
-          {/* Desktop only — below md the burger menu is the navigation. */}
-          <div className="hidden md:flex">
+          {/* Desktop only — below lg the burger menu is the navigation. */}
+          <div className="hidden shrink-0 lg:flex">
             <ul className="flex w-full flex-1 gap-1 overflow-y-hidden text-lg font-medium md:gap-2 md:text-xl lg:gap-4 lg:text-2xl xl:text-3xl">
               {navLinks.map((l, index) => (
                 <Link

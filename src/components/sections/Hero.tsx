@@ -4,12 +4,9 @@ import React, { useMemo } from 'react';
 import Image from 'next/image';
 import { MyName, Star } from '../design';
 import { Button } from '../common';
-import { getAvailableForWorkDate, gotoSection, textSplitterIntoChar } from '@/lib/utils';
-import { navLinks } from '@/lib/data';
-import { useLenis } from 'lenis/react';
+import { getAvailableForWorkDate, textSplitterIntoChar } from '@/lib/utils';
 
 export const Hero: React.FC = () => {
-  const lenis = useLenis();
   const whoAmI = useMemo(() => {
     return {
       __html: textSplitterIntoChar(
@@ -78,29 +75,6 @@ export const Hero: React.FC = () => {
                   <Button label="Get in touch" url="" />
                 </div>
               </div>
-
-              {/* Section links as pills — below md, where the header nav is
-                  hidden and the burger is the only other way in. */}
-              <nav aria-label="Sections" className="-mt-8 w-full md:hidden">
-                <ul className="flex flex-wrap gap-2">
-                  {navLinks.map((l) => (
-                    <li key={l.label}>
-                      <a
-                        href={l.url}
-                        onClick={(e) => {
-                          if (l.url.startsWith('#')) {
-                            e.preventDefault();
-                            gotoSection(l.url, lenis);
-                          }
-                        }}
-                        className="border-flax-smoke-500 text-flax-smoke-600 font-fancy active:bg-flax-smoke-500 active:text-flax-smoke-50 block rounded-full border px-4 py-2 text-sm text-nowrap uppercase transition-colors"
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
             </div>
 
             <div
