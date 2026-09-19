@@ -7,8 +7,8 @@ import NextLink from 'next/link';
 import { MagneticEffect } from './MagneticEffect';
 import { Button } from './Button';
 import { Circles } from '../design/Circles';
-import { BrandMark } from '../design/BrandMark';
 import { Logo } from '../design/Logo';
+import dynamic from 'next/dynamic';
 
 import {
   animateNavbarEnter,
@@ -18,6 +18,11 @@ import {
 import { navbarLinks, navLinks, socialLinks } from '@/lib/data';
 import { useLenis } from 'lenis/react';
 import { cn } from '@/lib/utils';
+
+// Client-only: lottie-web touches the DOM at import time.
+const BMark = dynamic(() => import('../design/BMark').then((m) => m.BMark), {
+  ssr: false,
+});
 
 export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -74,16 +79,21 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
         tabIndex={0}
         id="navbar"
         ref={navbarRef}
+        /* Lenis is stopped while the menu is open, which also swallows touch
+           gestures — this opts the panel out so it can still scroll itself. */
+        data-lenis-prevent
         onKeyDown={(e) => {
           if (e.key === 'Escape') toggleBtnClickAnimation();
         }}
-        className="bg-flax-smoke-950 fixed top-[1dvh] right-0 z-[9998] h-[98dvh] w-full translate-x-full rounded-s-lg p-5 will-change-auto select-none focus:outline-hidden max-md:w-[98%] sm:p-10 md:w-3/5 md:px-20 lg:w-2/5"
+        className="bg-flax-smoke-950 fixed top-[calc(1dvh_+_var(--safe-top))] right-0 z-[9998] flex h-[calc(98dvh_-_var(--safe-top)_-_var(--safe-bottom))] w-full translate-x-full flex-col overflow-y-auto overscroll-contain rounded-s-lg p-5 will-change-auto select-none focus:outline-hidden max-md:w-[98%] sm:p-10 md:w-3/5 md:px-20 lg:w-2/5"
       >
         <Circles id="circles" className="absolute top-0 right-0 opacity-25" />
-        <div className="flex h-full flex-col items-center justify-between">
+        <div className="flex min-h-full flex-1 flex-col items-center justify-between gap-10">
           <div className="relative z-10 w-full">
+            {/* Sized against the viewport height as well as its width so the
+                seven links never push the footer out of the panel. */}
             <ul
-              className="heading-2 text-flax-smoke-50 mt-12 font-bold md:mt-24"
+              className="text-flax-smoke-50 mt-10 text-[clamp(1.95rem,6.5dvh,3.55rem)] font-bold md:mt-16"
               id="navLinks"
             >
               {navbarLinks.map((l) => (
@@ -112,8 +122,8 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
             </ul>
           </div>
 
-          <div className="w-full">
-            <div className="text-flax-smoke-50 mt-2 h-full font-normal">
+          <div className="w-full shrink-0">
+            <div className="text-flax-smoke-50 font-normal">
               <Logo
                 variant="horizontal"
                 tagline
@@ -137,7 +147,7 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
 
       <header
         className={cn(
-          "padding-x absolute inset-0 z-20 h-fit -translate-y-full pt-6 will-change-auto",
+          "padding-x absolute inset-0 z-20 h-fit -translate-y-full pt-[calc(1.5rem_+_var(--safe-top))] will-change-auto",
           className
         )}
       >
@@ -155,7 +165,11 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
               className="group -m-10 block h-fit shrink-0 cursor-pointer p-10"
             >
               <h2 id="name" className="flex items-center text-2xl lg:text-3xl">
-                <BrandMark className="h-[1.4em] w-auto transition-transform duration-500 ease-in-out group-hover:-rotate-6" />
+                <BMark
+                  variant="intro"
+                  size={40}
+                  className="transition-transform duration-500 ease-in-out group-hover:-rotate-6"
+                />
                 <span className="sr-only">Belal Aboseada</span>
               </h2>
             </NextLink>

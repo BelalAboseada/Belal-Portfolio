@@ -54,6 +54,16 @@ layer(base);
   --heading-1--alt: clamp(3rem, 2.25rem + 3.75vw, 5.625rem);
 }
 
+/* iOS safe areas. The app ships viewport-fit=cover with a translucent status
+   bar, so anything pinned to an edge has to inset itself or it lands under the
+   notch, the Dynamic Island or the home indicator. */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+
 @utility font-fancy {
   font-family: var(--font-fancy) !important;
 }

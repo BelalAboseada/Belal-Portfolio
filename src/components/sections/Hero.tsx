@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
     <section className="padding-x mb-[-100svh] py-0">
       <div
         id="hero"
-        className="sticky top-0 flex min-h-[100svh] w-full items-end pb-[clamp(2.25rem,2.1786rem_+_0.3571vi,2.5rem)]"
+        className="sticky top-0 flex min-h-[100svh] w-full items-end pt-[calc(6rem_+_var(--safe-top))] pb-[calc(clamp(2.25rem,2.1786rem_+_0.3571vi,2.5rem)_+_var(--safe-bottom))] sm:pt-[var(--safe-top)]"
       >
         <div className="relative flex w-full flex-col items-center">
           <div className="w-full items-end overflow-clip">
@@ -36,8 +36,8 @@ export const Hero: React.FC = () => {
           </div>
 
           <div className="lg:column-gap spacing-t grid w-full grid-cols-12">
-            <div className="col-span-full flex flex-col items-start gap-14 sm:col-span-4">
-              <div className="overflow-hidden">
+            <div className="col-span-full flex flex-col items-start gap-8 sm:col-span-4 sm:gap-14">
+              <div className="hide-on-mobile overflow-hidden">
                 <svg
                   id="down-arrow"
                   stroke="currentColor"
@@ -79,7 +79,7 @@ export const Hero: React.FC = () => {
 
             <div
               id="profile-container"
-              className="relative col-span-4 mt-10 h-[20vh] max-w-lg flex-col rounded-lg select-none sm:mt-0 sm:h-full md:flex md:h-[50vh]"
+              className="relative col-span-4 mt-6 h-[20vh] max-w-lg flex-col rounded-lg select-none sm:mt-0 sm:h-full md:flex md:h-[50vh]"
             >
               <div className="overlay bg-flax-smoke-50 absolute inset-0 z-[2]"></div>
               <Image

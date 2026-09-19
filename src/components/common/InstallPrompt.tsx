@@ -64,7 +64,7 @@ export function InstallPrompt() {
   return (
     <button
       onClick={handleInstallClick}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-flax-smoke-950 px-5 py-3 text-sm font-medium text-flax-smoke-50 shadow-lg transition-transform hover:scale-105"
+      className="fixed bottom-[calc(1.5rem_+_var(--safe-bottom))] right-[calc(1.5rem_+_var(--safe-right))] z-50 flex items-center gap-2 rounded-full bg-flax-smoke-950 px-5 py-3 text-sm font-medium text-flax-smoke-50 shadow-lg transition-transform hover:scale-105"
       aria-label="Install App"
     >
       <BrandMark className="h-4 w-auto" />

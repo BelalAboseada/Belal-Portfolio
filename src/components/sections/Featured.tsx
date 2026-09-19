@@ -6,6 +6,13 @@ import { useWindowSize } from '@/lib/hooks';
 import { textSplitterIntoChar } from '@/lib/utils';
 import { animateSplitText } from '@/lib/animations';
 import { RiInstagramFill, RiPlayCircleLine } from 'react-icons/ri';
+import dynamic from 'next/dynamic';
+
+// Client-only: lottie-web touches the DOM at import time.
+const ComingSoonTile = dynamic(
+  () => import('../design/ComingSoonTile').then((m) => m.ComingSoonTile),
+  { ssr: false }
+);
 
 
 export const Featured: React.FC = () => {
@@ -19,36 +26,12 @@ export const Featured: React.FC = () => {
 
   const featuredItems = useMemo(() => [
     {
-      type: 'instagram',
-      name: 'Instagram Reel',
-      category: 'Instagram',
-      tags: ['Instagram', 'Tech Review'],
-      url: 'https://www.instagram.com/reel/DbgNbesMwwx/',
-      year: '2024',
-    },
-    {
-      type: 'instagram',
-      name: 'Instagram Reel',
-      category: 'Instagram',
-      tags: ['Instagram', 'Tech Review'],
-      url: 'https://www.instagram.com/reel/DZxXQ9IMTHd/',
-      year: '2024',
-    },
-    {
       type: 'coming-soon',
       name: 'Coming Soon',
       category: 'Something new is in the works.',
       tags: ['In Progress'],
       url: '#',
-      year: '2025',
-    },
-    {
-      type: 'coming-soon',
-      name: 'Coming Soon',
-      category: 'Something new is in the works.',
-      tags: ['In Progress'],
-      url: '#',
-      year: '2025',
+      year: '2026',
     },
   ], []);
 
@@ -145,21 +128,15 @@ export const Featured: React.FC = () => {
             className="heading-1 text-start leading-none font-bold uppercase"
             dangerouslySetInnerHTML={featuredTitle}
           ></h3>
-          <p className="heading-1 text-flax-smoke-400 text-opacity-50 hidden w-4/5 text-end font-extrabold sm:block">
-            ( {featuredItems.length} )
-          </p>
-
           <div
             id="featured-text"
             className="md:column-gap text-flax-smoke-300 mt-[5%] grid grid-cols-12 justify-end opacity-0 lg:grid"
           >
             <p className="heading-6 text-flax-smoke-300/85 col-span-4 text-center text-nowrap lg:col-start-2">
-              (
-              <span className="inline sm:hidden">{featuredItems.length} </span>
-              CONTENT )
+              ( APPS )
             </p>
             <p className="heading-4 font-fancy col-span-8 w-full text-balance sm:font-semibold lg:col-span-7">
-              A curated selection of reviews, tech insights, and AI breakdowns.
+              A curated selection of the apps I design, build, and ship.
             </p>
           </div>
         </div>
@@ -197,7 +174,7 @@ export const Featured: React.FC = () => {
                     ) : (
                       <div className="size-full flex items-center justify-center relative overflow-hidden">
                          <div className="absolute inset-0 bg-linear-to-br from-flax-smoke-900/10 to-transparent"></div>
-                         <span className="font-fancy text-[120px] text-flax-smoke-900/40 font-bold group-hover:text-flax-smoke-800 transition-colors">?</span>
+                         <ComingSoonTile size={260} className="relative z-10 w-[40cqw]" />
                       </div>
                     )}
                   </div>

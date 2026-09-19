@@ -1,3 +1,5 @@
+export * from './ComingSoonTile';
+export * from './BMark';
 export * from './BrandMark';
 export * from './Circles';
 export * from './Cursor';

@@ -42,7 +42,7 @@ export const BurgerMenuBtn: React.FC<BurgerMenuBtnProps> = ({ className, ...prop
         }
       `}</style>
       <MagneticEffect divId="magneto" textId="magnetoText">
-        <div className={cn("fixed right-7 top-7 z-[9999]", className)} {...props}>
+        <div className={cn("fixed top-[calc(1.75rem_+_var(--safe-top))] right-[calc(1.75rem_+_var(--safe-right))] z-[9999]", className)} {...props}>
           <div
             id="magneto"
             className="flex-center size-14 cursor-pointer rounded-full bg-flax-smoke-300 brightness-90 ease-in-out lg:size-[4.5rem]"

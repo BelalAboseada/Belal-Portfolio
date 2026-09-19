@@ -47,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({
       <BrandMark className={cn('h-[1.6em] w-auto shrink-0', markClassName)} />
       <span className={cn('flex flex-col', isVertical ? 'items-center' : 'items-start')}>
         <span className="font-fancy leading-none font-bold uppercase tracking-[0.17em]">
-          Belal Aboseada
+          elal Aboseada
         </span>
         {tagline && (
           <span className="font-fancy mt-[0.5em] text-[0.5em] leading-none font-medium uppercase tracking-[0.3em] opacity-70">
