@@ -84,11 +84,11 @@ export const Hero: React.FC = () => {
               <div className="overlay bg-flax-smoke-50 absolute inset-0 z-[2]"></div>
               <Image
                 id="profile-img"
-                src="/images/profile.jpg"
-                alt="Belal profile"
+                src="/images/avatar.webp"
+                alt="Illustrated avatar of Belal"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="size-full scale-90 rounded-lg object-cover object- brightness-110 grayscale"
+                className="size-full scale-90 object-contain object-bottom"
                 priority
               />
             </div>
