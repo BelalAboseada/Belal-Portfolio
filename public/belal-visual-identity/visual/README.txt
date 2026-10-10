@@ -101,5 +101,15 @@ FOLDERS
                 og-image                               1200 × 630
                 linkedin-banner                        1584 × 396
 
+06-avatar/      Avatar: the personal face of the brand, next to the B monogram.
+                Bold line-art portrait, recoloured to the brand duotone:
+                ink Flax Smoke 950 (#1C1D16) on paper Flax Smoke 50 (#F4F4F1).
+                belal-avatar 1024 · 512 · 256 · 128 · 64 · 32  (round, transparent corners)
+                belal-avatar-square-1024  (square, for GitHub / social uploads)
+                belal-avatar.ico  (16-64, favicon)
+                belal-avatar-source.png  (original black-and-white artwork)
+                Use the B mark for the brand; use the avatar where a person
+                speaks: GitHub, social profiles, bylines, video end cards.
+
 brand-board.png         All 14 sheets on one presentation board.
 brand-guidelines.html   Interactive guidelines — open in any browser.

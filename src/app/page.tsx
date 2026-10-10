@@ -6,6 +6,7 @@ import { Nav } from '@/components/common/Nav';
 import { Hero, Services, Works, Featured, AboutMe, People, Contact } from '@/components/sections';
 import { InstallPrompt } from '@/components/common/InstallPrompt';
 import { useWindowSize } from '@/lib/hooks';
+import { SHOW_TESTIMONIALS } from '@/lib/data';
 
 export default function Home() {
   const SHOW_CLIENT_PROJECTS = false;
@@ -87,7 +88,7 @@ export default function Home() {
         </div>
 
         <AboutMe />
-        <People />
+        {SHOW_TESTIMONIALS && <People />}
         <Contact />
       </main>
 

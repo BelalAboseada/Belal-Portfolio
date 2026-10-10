@@ -4,8 +4,12 @@ export type navLinkType = {
   url: string;
 };
 
+// Testimonials are hidden for now. Flip this back to true to restore the
+// section and its nav/footer links together.
+const SHOW_TESTIMONIALS = false;
+
 // Nav
-const navLinks = [
+const allNavLinks = [
   {
     label: 'Services',
     url: '#services',
@@ -31,6 +35,10 @@ const navLinks = [
     url: '/links',
   },
 ];
+const navLinks = allNavLinks.filter(
+  (l) => SHOW_TESTIMONIALS || l.url !== '#testimonials-section'
+);
+
 const navbarLinks = [
   {
     label: 'Home',
@@ -82,6 +90,7 @@ const dataCalConfig =
   '{"layout":"month_view", "theme": "dark", "brand": "#8C8C73"}';
 
 export {
+  SHOW_TESTIMONIALS,
   socialLinks,
   resourceLinks,
   heroText,
