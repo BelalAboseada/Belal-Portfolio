@@ -16,7 +16,9 @@ const allNavLinks = [
   },
   {
     label: 'Projects',
-    url: '#works',
+    // The client-projects section (#works) is hidden for now, so point at the
+    // featured apps instead.
+    url: '#featured',
   },
   {
     label: 'About',

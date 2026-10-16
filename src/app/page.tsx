@@ -78,7 +78,7 @@ export default function Home() {
       <Cursor />
       <Nav />
 
-      <main className="relative min-h-full">
+      <main id="app" className="relative min-h-full">
         <Hero />
         <div className="text-flax-smoke-200 relative rounded-t-3xl bg-[#0B0B0A] py-[5%]">
           <Services />
