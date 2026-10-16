@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { BrandMark, Logo, LoadingScreen } from '@/components/design';
+import UsefulApps from './UsefulApps';
 
 interface Link {
   id: string;
@@ -93,6 +94,14 @@ export default function LinksDisplay({ social, products }: Props) {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* FEATURED — custom popup links */}
+          <div className="w-full max-w-2xl mb-20">
+            <p className="heading-6 text-flax-smoke-400 text-center text-nowrap mb-8 font-semibold">
+              ( FROM MY VIDEOS )
+            </p>
+            <UsefulApps />
           </div>
 
           {/* PRODUCTS SECTION */}
