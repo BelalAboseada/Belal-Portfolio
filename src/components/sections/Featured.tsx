@@ -7,6 +7,7 @@ import { textSplitterIntoChar } from '@/lib/utils';
 import { animateSplitText } from '@/lib/animations';
 import { RiInstagramFill, RiPlayCircleLine } from 'react-icons/ri';
 import dynamic from 'next/dynamic';
+import { ArcflowLoader } from '../design/ArcflowLoader';
 
 // Client-only: lottie-web touches the DOM at import time.
 const ComingSoonTile = dynamic(
@@ -25,6 +26,14 @@ export const Featured: React.FC = () => {
   }, []);
 
   const featuredItems = useMemo(() => [
+    {
+      type: 'arcflow',
+      name: 'Arcflow',
+      category: '',
+      tags: ['Coming Soon'],
+      url: 'https://arcflow.digital/',
+      year: '2026',
+    },
     {
       type: 'coming-soon',
       name: 'Coming Soon',
@@ -133,10 +142,10 @@ export const Featured: React.FC = () => {
             className="md:column-gap text-flax-smoke-300 mt-[5%] grid grid-cols-12 justify-end opacity-0 lg:grid"
           >
             <p className="heading-6 text-flax-smoke-300/85 col-span-4 text-center text-nowrap lg:col-start-2">
-              ( APPS )
+              ( PRODUCTS )
             </p>
             <p className="heading-4 font-fancy col-span-8 w-full text-balance sm:font-semibold lg:col-span-7">
-              A curated selection of the apps I design, build, and ship.
+              My own products — designed, built, and shipped by me.
             </p>
           </div>
         </div>
@@ -171,6 +180,11 @@ export const Featured: React.FC = () => {
                           </span>
                         </div>
                       </div>
+                    ) : item.type === 'arcflow' ? (
+                      <div className="size-full flex items-center justify-center relative overflow-hidden">
+                         <div className="absolute inset-0 bg-linear-to-br from-flax-smoke-900/10 to-transparent"></div>
+                         <ArcflowLoader size={260} className="relative z-10 w-[40cqw]" />
+                      </div>
                     ) : (
                       <div className="size-full flex items-center justify-center relative overflow-hidden">
                          <div className="absolute inset-0 bg-linear-to-br from-flax-smoke-900/10 to-transparent"></div>
@@ -179,10 +193,12 @@ export const Featured: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <p className="heading-6 font-title! mt-[2%] mb-[1%] leading-none">
-                      {item.category}
-                    </p>
-                    <div className="items-center justify-between sm:flex">
+                    {item.category && (
+                      <p className="heading-6 font-title! mt-[2%] mb-[1%] leading-none">
+                        {item.category}
+                      </p>
+                    )}
+                    <div className={`items-center justify-between sm:flex ${item.category ? '' : 'mt-[2%]'}`}>
                       <h3 className="heading-3 font-title! font-bold uppercase">
                         {item.name}
                       </h3>
