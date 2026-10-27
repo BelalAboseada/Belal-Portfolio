@@ -29,8 +29,8 @@ export const Featured: React.FC = () => {
     {
       type: 'arcflow',
       name: 'Arcflow',
-      category: '',
-      tags: ['Coming Soon'],
+      category: 'Edit faster inside Premiere Pro.',
+      tags: ['Out Now'],
       url: 'https://arcflow.digital/',
       year: '2026',
     },
